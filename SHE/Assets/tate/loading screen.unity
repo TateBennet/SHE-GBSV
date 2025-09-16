@@ -2916,8 +2916,9 @@ MonoBehaviour:
   m_Text: '*Disclaimer*
 
 
-    This experience deals with sensitive subject matter
-    including sexual harrassment.'
+    This VR experience addresses sensitive and potentially
+    distressing topics, including harassment and violence. Participation is voluntary.
+    You may stop at any time if you feel uncomfortable.'
 --- !u!222 &1769623670
 CanvasRenderer:
   m_ObjectHideFlags: 0
