@@ -176,12 +176,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1413691764}
     - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 303842470}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayNext
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: HideUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072292784477224837, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8202556835148571196, guid: 60c678985a9e04f4ea3f37181ea858ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -322,6 +350,57 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &303842469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303842471}
+  - component: {fileID: 303842470}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &303842470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303842469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8422d53adc51346a97fdbedaf91e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streamVideos: {fileID: 1413691764}
+  uiRoot: {fileID: 252346445}
+  uiAnchor: {fileID: 1799458485}
+  autoPlaceUI: 1
+  uiDistance: 0.05
+  uiOffset: {x: 0, y: -1.2, z: 0}
+  faceAnchor: 1
+--- !u!4 &303842471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303842469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0241128, y: 1.699179, z: -2.234496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,15 +1037,9 @@ MonoBehaviour:
   videoPlayer: {fileID: 1312232299}
   videoFolder: C:\GBSV
   videoFiles:
-  - VolleyballSceneV1.mp4
+  - VolleyballScene V1NEW_360.mp4
   - VolleyballSceneV2.mp4
   - VolleyballSceneV2B1.mp4
-  pauseUIRoot: {fileID: 252346445}
-  uiAnchor: {fileID: 1799458485}
-  autoPlaceUI: 1
-  uiDistance: 0.1
-  uiOffset: {x: 0, y: -1.2, z: 0}
-  faceAnchor: 1
 --- !u!4 &1413691765
 Transform:
   m_ObjectHideFlags: 0
@@ -1059,15 +1132,15 @@ MonoBehaviour:
   videoPlayer: {fileID: 1312232299}
   perVideoCues:
   - clip: {fileID: 0}
-    urlContains: VolleyballSceneV1.mp4
+    urlContains: VolleyballScene V1NEW_360.mp4
     cues:
     - timeSeconds: 97
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
-            m_MethodName: ShowPauseUI
+          - m_Target: {fileID: 303842470}
+            m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+            m_MethodName: ShowUI
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -1107,24 +1180,6 @@ MonoBehaviour:
           - m_Target: {fileID: 2058710581}
             m_TargetAssemblyTypeName: BallServer, Assembly-CSharp
             m_MethodName: Serve
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      repeat: 0
-      repeatInterval: 0
-    - timeSeconds: 59
-      onCue:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
-            m_MethodName: ShowPauseUI
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -1301,3 +1356,4 @@ SceneRoots:
   - {fileID: 1413691765}
   - {fileID: 7412725959385624045}
   - {fileID: 252346444}
+  - {fileID: 303842471}
