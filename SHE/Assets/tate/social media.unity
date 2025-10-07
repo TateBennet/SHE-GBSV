@@ -1253,6 +1253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413691765}
   - component: {fileID: 1413691764}
+  - component: {fileID: 1413691766}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -1267,7 +1268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413691763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efb418ebd23ea0747ad16f0a1769e3a5, type: 3}
   m_Name: 
@@ -1297,6 +1298,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1413691766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413691763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3004ee0e3099c14c9911a78a97a2653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1312232299}
+  targetSphere: {fileID: 1312232301}
+  blackOverlay: {fileID: 0}
+  statusText: {fileID: 0}
+  files:
+  - SocialMediaS1.mp4
+  - SocialMediaS2.mp4
+  - SocialMediaS3.mp4
+  - SocialMediaS4A.mp4
+  - SocialMediaS4B.mp4
+  - SocialMediaS5A.mp4
+  - SocialMediaS5B.mp4
+  fadeDuration: 1
+  introSceneName: loading screen
+  returnToIntroAtEnd: 1
 --- !u!1 &1669573020
 GameObject:
   m_ObjectHideFlags: 0
