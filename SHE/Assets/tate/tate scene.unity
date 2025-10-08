@@ -1038,9 +1038,9 @@ MonoBehaviour:
   videoPlayer: {fileID: 1312232299}
   videoFolder: C:\GBSV
   videoFiles:
-  - VolleyballScene V1NEW_360.mp4
-  - VolleyballSceneV2.mp4
-  - VolleyballSceneV2B1.mp4
+  - VBSceneA.mp4
+  - VBSceneB.mp4
+  - VBSceneC.mp4
 --- !u!4 &1413691765
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,6 +1084,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2863567331750335740, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 7412725959385624045}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1902961938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1902961939}
+  - component: {fileID: 1902961941}
+  - component: {fileID: 1902961940}
+  m_Layer: 0
+  m_Name: pointercollider
+  m_TagString: pointer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1902961939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902961938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000016530974, y: -0.0000000018626449, z: 0.000000001498847, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7412725959385624046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1902961940
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902961938}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1902961941
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902961938}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.008
+  m_Center: {x: 0.001, y: -0.003, z: -0.003}
 --- !u!1 &2058710580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1237,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1312232299}
   perVideoCues:
   - clip: {fileID: 0}
-    urlContains: VolleyballScene V1NEW_360.mp4
+    urlContains: VBSceneA.mp4
     cues:
     - timeSeconds: 97
       onCue:
@@ -1177,7 +1258,7 @@ MonoBehaviour:
       repeat: 0
       repeatInterval: 0
   - clip: {fileID: 0}
-    urlContains: VolleyballSceneV2.mp4
+    urlContains: VBSceneB.mp4
     cues:
     - timeSeconds: 32
       onCue:
@@ -1360,11 +1441,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tate custom XR Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 4512382145507464480, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066358441193439966, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_TagString
+      value: Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 7472501742097009811, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_TagString
+      value: Hand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3954094031570531440, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1902961939}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+--- !u!4 &7412725959385624046 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+  m_PrefabInstance: {fileID: 7412725959385624045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

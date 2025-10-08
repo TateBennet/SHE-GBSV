@@ -297,7 +297,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
   m_PrefabInstance: {fileID: 1360864977}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &445111314
+--- !u!114 &445111316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,19 +313,30 @@ MonoBehaviour:
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: 6eb86945359bbe44593e77892f1a6f09, type: 3}
   - {fileID: 2800000, guid: c8259fb7732c65c4797e7ed9150d8478, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: 6df5dbc1b7a092f4aa952f9bc47ae91b, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: e9a8111664458b84b979947d1c4979d9, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: 2e25a04c65f750943a104682b233a68f, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: 3a7699d27f0b34542835178e90851669, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
+  - {fileID: 2800000, guid: 093f87b492a0c08479a5739cde9db637, type: 3}
   screenButtons:
-  - {fileID: 1669573020}
+  - {fileID: 476550061}
   - {fileID: 581082540}
   - {fileID: 1830515283}
+  - {fileID: 0}
   - {fileID: 2047043190}
+  - {fileID: 0}
   - {fileID: 451093080}
+  - {fileID: 0}
   - {fileID: 615309933}
+  - {fileID: 0}
   - {fileID: 2003569761}
+  - {fileID: 0}
+  - {fileID: 0}
   phoneRenderer: {fileID: 445111311}
   screenMaterialIndex: 1
   fadeDuration: 0.5
@@ -339,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451093083}
   - component: {fileID: 451093082}
-  - component: {fileID: 451093081}
+  - component: {fileID: 451093084}
   m_Layer: 0
   m_Name: tap4
   m_TagString: Untagged
@@ -347,19 +358,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &451093081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451093080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
 --- !u!65 &451093082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -396,6 +394,88 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445111313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &451093084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451093080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  streamVideos: {fileID: 1413691764}
+--- !u!1 &476550061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476550064}
+  - component: {fileID: 476550063}
+  - component: {fileID: 476550065}
+  m_Layer: 0
+  m_Name: tap0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &476550063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476550061}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.75, y: 0.75, z: 0.75}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &476550064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476550061}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.0007, y: 0.0465, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445111313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476550065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476550061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  player: {fileID: 1312232299}
 --- !u!1 &581082540
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,10 +539,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 581082540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
+  phone: {fileID: 445111316}
+  streamVideos: {fileID: 1413691764}
 --- !u!1 &615309933
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615309936}
   - component: {fileID: 615309935}
-  - component: {fileID: 615309934}
+  - component: {fileID: 615309937}
   m_Layer: 0
   m_Name: tap5
   m_TagString: Untagged
@@ -481,19 +562,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &615309934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615309933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
 --- !u!65 &615309935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -530,38 +598,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445111313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &736108554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3954094031570531440, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-  m_PrefabInstance: {fileID: 788835136}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &736108557
-Rigidbody:
+--- !u!114 &615309937
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736108554}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_GameObject: {fileID: 615309933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  streamVideos: {fileID: 1413691764}
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tate custom XR Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 4512382145507464480, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6894451142289397213, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -701,13 +755,19 @@ PrefabInstance:
       value: PlayerHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3954094031570531440, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 3954094031570531440, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 736108557}
+      addedObject: {fileID: 1423712965}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+--- !u!4 &788835139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+  m_PrefabInstance: {fileID: 788835136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1075807696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2863567331750335740, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
@@ -748,13 +808,208 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: SocialMediaS1.mp4
     cues:
-    - timeSeconds: 15
+    - timeSeconds: 16
       onCue:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 1186109761}
             m_TargetAssemblyTypeName: PhoneSpawn, Assembly-CSharp
             m_MethodName: ActivatePhone
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 23
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS2.mp4
+    cues:
+    - timeSeconds: 7
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 10
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 24
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS3.mp4
+    cues:
+    - timeSeconds: 23
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 60
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS4A.mp4
+    cues:
+    - timeSeconds: 15
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 30
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS4B.mp4
+    cues:
+    - timeSeconds: 20
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS5B.mp4
+    cues:
+    - timeSeconds: 15
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -1200,6 +1455,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 967672301998166825, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 967672301998166825, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b59597790486f4840b76f888406178c5, type: 2}
     - target: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       propertyPath: m_Name
       value: phone2k
@@ -1213,7 +1476,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1669573022}
+      addedObject: {fileID: 476550064}
     - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581082543}
@@ -1241,7 +1504,7 @@ PrefabInstance:
       addedObject: {fileID: 445111309}
     - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 445111314}
+      addedObject: {fileID: 445111316}
   m_SourcePrefab: {fileID: 100100000, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
 --- !u!1 &1413691763
 GameObject:
@@ -1253,6 +1516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413691765}
   - component: {fileID: 1413691764}
+  - component: {fileID: 1413691766}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -1267,7 +1531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413691763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efb418ebd23ea0747ad16f0a1769e3a5, type: 3}
   m_Name: 
@@ -1280,7 +1544,6 @@ MonoBehaviour:
   - SocialMediaS3.mp4
   - SocialMediaS4A.mp4
   - SocialMediaS4B.mp4
-  - SocialMediaS5A.mp4
   - SocialMediaS5B.mp4
 --- !u!4 &1413691765
 Transform:
@@ -1297,7 +1560,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1669573020
+--- !u!114 &1413691766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413691763}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3004ee0e3099c14c9911a78a97a2653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1312232299}
+  targetSphere: {fileID: 1312232301}
+  blackOverlay: {fileID: 0}
+  statusText: {fileID: 0}
+  files:
+  - SocialMediaS1.mp4
+  - SocialMediaS2.mp4
+  - SocialMediaS3.mp4
+  - SocialMediaS4A.mp4
+  - SocialMediaS4B.mp4
+  - SocialMediaS5B.mp4
+  fadeDuration: 1
+  introSceneName: Intro_Scene
+  returnToIntroAtEnd: 1
+--- !u!1 &1423712964
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1305,23 +1594,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1669573022}
-  - component: {fileID: 1669573021}
-  - component: {fileID: 1669573023}
+  - component: {fileID: 1423712965}
+  - component: {fileID: 1423712966}
+  - component: {fileID: 1423712967}
   m_Layer: 0
-  m_Name: tap0
-  m_TagString: Untagged
+  m_Name: pointercollider
+  m_TagString: pointer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1669573021
-BoxCollider:
+--- !u!4 &1423712965
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669573020}
+  m_GameObject: {fileID: 1423712964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 788835139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1423712966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423712964}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1330,40 +1634,39 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1669573022
-Transform:
+  m_Radius: 0.008
+  m_Center: {x: 0.001, y: -0.003, z: -0.003}
+--- !u!54 &1423712967
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669573020}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 445111313}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1669573023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669573020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
+  m_GameObject: {fileID: 1423712964}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1830515283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,7 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830515286}
   - component: {fileID: 1830515285}
-  - component: {fileID: 1830515284}
+  - component: {fileID: 1830515287}
   m_Layer: 0
   m_Name: tap2
   m_TagString: Untagged
@@ -1382,19 +1685,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1830515284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830515283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
 --- !u!65 &1830515285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1431,6 +1721,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445111313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830515287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830515283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  player: {fileID: 1312232299}
 --- !u!4 &1869207274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5408919155689928052, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
@@ -1466,7 +1770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
+  phone: {fileID: 445111316}
+  player: {fileID: 1312232299}
 --- !u!65 &2003569763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1569,7 +1874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phone: {fileID: 445111314}
+  phone: {fileID: 445111316}
   streamVideos: {fileID: 1413691764}
 --- !u!1 &2092139007
 GameObject:
