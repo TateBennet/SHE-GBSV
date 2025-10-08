@@ -3,7 +3,7 @@ using UnityEngine;
 public class VideoProgressCollider : MonoBehaviour
 {
     public PhoneMaterialSwitch phone; // Drag the phone parent here
-    public StreamVideos streamVideos;
+    public QuestVideoPlaylist streamVideos;
     private bool hasBeenTapped = false;
 
     private void OnTriggerEnter(Collider other)

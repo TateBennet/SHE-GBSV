@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691764}
+  streamVideos: {fileID: 1413691766}
 --- !u!1 &476550061
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691764}
+  streamVideos: {fileID: 1413691766}
 --- !u!1 &615309933
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691764}
+  streamVideos: {fileID: 1413691766}
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,8 +830,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -851,8 +851,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -887,8 +887,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -926,8 +926,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -965,8 +965,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413691763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3004ee0e3099c14c9911a78a97a2653, type: 3}
   m_Name: 
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691764}
+  streamVideos: {fileID: 1413691766}
 --- !u!1 &2092139007
 GameObject:
   m_ObjectHideFlags: 0

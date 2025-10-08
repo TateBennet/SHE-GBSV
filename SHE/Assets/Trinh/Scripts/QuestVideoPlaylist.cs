@@ -64,7 +64,7 @@ public class QuestVideoPlaylist : MonoBehaviour
         yield return PlayIndex(_index, fadeIn: true);
     }
 
-    private IEnumerator PlayNext()
+    public IEnumerator PlayNext()
     {
         yield return FadeOverlay(0f, 1f, fadeDuration);
         yield return FadeVolume(1f, 0f, fadeDuration * 0.8f);
@@ -86,6 +86,15 @@ public class QuestVideoPlaylist : MonoBehaviour
         }
 
         yield return PlayIndex(_index, fadeIn: true);
+    }
+
+    public void PauseVideo()
+    {
+        if (videoPlayer.isPlaying)
+        {
+            videoPlayer.Pause();
+            Debug.Log("Video paused.");
+        }
     }
 
     public void Next() => StartCoroutine(PlayNext());
