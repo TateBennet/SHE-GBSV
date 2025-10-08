@@ -13,7 +13,7 @@ public class VideoProgressCollider : MonoBehaviour
             hasBeenTapped = true;          // prevent multiple triggers
             phone.TapButton();
             gameObject.SetActive(false);   // disable this button right away
-            streamVideos.PlayNext();
+            streamVideos.StartCoroutine("PlayNext");
         }
     }
 

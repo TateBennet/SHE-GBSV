@@ -1080,7 +1080,7 @@ MonoBehaviour:
   - VBSceneC.mp4
   - VBSceneD.mp4
   - VBSceneE.mp4
-  fadeDuration: 1
+  fadeDuration: 0
   introSceneName: loading screen
   returnToIntroAtEnd: 1
 --- !u!4 &1799458485 stripped

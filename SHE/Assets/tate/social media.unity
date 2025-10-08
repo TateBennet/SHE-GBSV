@@ -1583,8 +1583,8 @@ MonoBehaviour:
   - SocialMediaS4A.mp4
   - SocialMediaS4B.mp4
   - SocialMediaS5B.mp4
-  fadeDuration: 1
-  introSceneName: Intro_Scene
+  fadeDuration: 0
+  introSceneName: loading screen
   returnToIntroAtEnd: 1
 --- !u!1 &1423712964
 GameObject:
