@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Video;
@@ -27,11 +28,11 @@ public class TimedBallServe : MonoBehaviour
     [Serializable]
     public class ClipCues
     {
-        [Header("Match rules (use either)")]
-        [Tooltip("If set, cues apply when this exact VideoClip is playing.")]
+        [Header("Match rules (prefer URL filename match)")]
+        [Tooltip("If set, cues apply when this exact VideoClip is playing (useful only if you use VideoClip assets).")]
         public VideoClip clip;
 
-        [Tooltip("If clip is null, you can match by URL substring (for streaming/playlists). Leave empty for no URL match.")]
+        [Tooltip("Match by URL substring or filename. Example: 'volleyballscenev2b1.mp4'")]
         public string urlContains;
 
         [Header("Cues for this video")]
@@ -65,6 +66,10 @@ public class TimedBallServe : MonoBehaviour
             videoPlayer.loopPointReached += OnLoop;
             videoPlayer.prepareCompleted += OnPrepared;
         }
+        else
+        {
+            Debug.LogWarning("[TimedBallServe] No VideoPlayer found.");
+        }
     }
 
     void OnDestroy()
@@ -87,7 +92,7 @@ public class TimedBallServe : MonoBehaviour
     {
         if (!videoPlayer || !videoPlayer.isPrepared) return;
 
-        // Detect clip/url change (e.g., playlist advancing)
+        // Detect clip/url change (playlist advancing, streaming URL switching)
         if (videoPlayer.clip != _lastClip || videoPlayer.url != _lastUrl)
         {
             SelectActiveSetForCurrentVideo();
@@ -99,7 +104,7 @@ public class TimedBallServe : MonoBehaviour
 
         double t = videoPlayer.time;
 
-        // Detect seek backwards
+        // Detect seek backwards / loop
         if (resetOnLoopOrSeekBack && t + 1e-6 < _lastTime)
             ArmActiveCuesFrom(t);
 
@@ -111,8 +116,7 @@ public class TimedBallServe : MonoBehaviour
                 if (!cue.armed) continue;
 
                 double target = cue.nextFireTime;
-                bool crossed =
-                    (_lastTime <= target) && (t >= target - toleranceSeconds);
+                bool crossed = (_lastTime <= target) && (t >= target - toleranceSeconds);
 
                 if (crossed)
                 {
@@ -120,13 +124,9 @@ public class TimedBallServe : MonoBehaviour
                     catch (Exception e) { Debug.LogException(e, this); }
 
                     if (cue.repeat && cue.repeatInterval > 0)
-                    {
                         cue.nextFireTime += cue.repeatInterval;
-                    }
                     else
-                    {
                         cue.armed = false; // one-shot
-                    }
                 }
             }
         }
@@ -142,9 +142,7 @@ public class TimedBallServe : MonoBehaviour
 
     void OnPrepared(VideoPlayer vp)
     {
-        // Some playlist controllers call Prepare on the next clip before play.
-        // When the player switches, Update() will also detect it; this just
-        // ensures cues are ready ASAP.
+        // Ensure cues are ready as soon as the clip is prepared
         SelectActiveSetForCurrentVideo();
         ArmActiveCuesFrom(0);
     }
@@ -152,21 +150,33 @@ public class TimedBallServe : MonoBehaviour
     void SelectActiveSetForCurrentVideo()
     {
         _activeSet = null;
-        var currentClip = videoPlayer.clip;
-        var currentUrl = videoPlayer.url ?? string.Empty;
+        var currentClip = videoPlayer ? videoPlayer.clip : null;
+        var currentUrl = videoPlayer && videoPlayer.url != null ? videoPlayer.url : string.Empty;
+
+        string urlLower = currentUrl.ToLowerInvariant();
+        string fileNameLower = ExtractLowerFileName(currentUrl);
 
         foreach (var set in perVideoCues)
         {
             bool clipMatch = set.clip != null && set.clip == currentClip;
-            bool urlMatch = !clipMatch && !string.IsNullOrEmpty(set.urlContains)
-                             && currentUrl.IndexOf(set.urlContains, StringComparison.OrdinalIgnoreCase) >= 0;
+
+            bool urlMatch = false;
+            if (!clipMatch && !string.IsNullOrEmpty(set.urlContains))
+            {
+                string needle = set.urlContains.ToLowerInvariant();
+                urlMatch = urlLower.Contains(needle) || fileNameLower.Contains(needle);
+            }
 
             if (clipMatch || urlMatch)
             {
                 _activeSet = set;
-                break;
+                Debug.Log($"[TimedBallServe] Active cue set selected. clipMatch={clipMatch}, urlMatch={urlMatch}, url='{currentUrl}', file='{fileNameLower}'");
+                return;
             }
         }
+
+        Debug.LogWarning($"[TimedBallServe] No matching cue set found. url='{currentUrl}', file='{fileNameLower}'. " +
+                         $"Add a perVideoCues entry with urlContains like '{fileNameLower}'.");
     }
 
     void ArmActiveCuesFrom(double currentTime)
@@ -179,11 +189,8 @@ public class TimedBallServe : MonoBehaviour
 
             if (cue.repeat && cue.repeatInterval > 0)
             {
-                // Find next repeat time >= currentTime, starting from first timeSeconds
                 if (currentTime <= cue.timeSeconds)
-                {
                     cue.nextFireTime = cue.timeSeconds;
-                }
                 else
                 {
                     var n = Math.Ceiling((currentTime - cue.timeSeconds) / cue.repeatInterval);
@@ -193,10 +200,21 @@ public class TimedBallServe : MonoBehaviour
             else
             {
                 cue.nextFireTime = cue.timeSeconds;
-                // If the one-shot cue time is already behind us after a seek, you can choose to:
-                // - keep it armed (will fire if time goes backwards past it), or
-                // - disarm it now. We'll keep it armed for simplicity.
             }
         }
+    }
+
+    static string ExtractLowerFileName(string url)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(url)) return string.Empty;
+            if (url.StartsWith("file://", StringComparison.OrdinalIgnoreCase))
+                url = url.Substring("file://".Length);
+
+            url = Uri.UnescapeDataString(url);
+            return Path.GetFileName(url).ToLowerInvariant();
+        }
+        catch { return string.Empty; }
     }
 }

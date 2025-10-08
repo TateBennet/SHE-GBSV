@@ -45,7 +45,7 @@ public class BallServer : MonoBehaviour
     {
         if (!ballPrefab || !servePoint || !playerHead)
         {
-            Debug.LogWarning("BallServerSpawner: Assign ballPrefab, servePoint, and playerHead.");
+            Debug.LogWarning("[BallServer] Assign ballPrefab, servePoint, and playerHead.");
             return;
         }
 
@@ -87,6 +87,8 @@ public class BallServer : MonoBehaviour
 
         // Launch with ballistic velocity
         rb.linearVelocity = CalculateBallisticVelocity(servePoint.position, target, timeToTarget);
+
+        Debug.Log($"[BallServer] Serve -> from {servePoint.position} to {target}, v0={rb.linearVelocity}");
     }
 
     static Vector3 CalculateBallisticVelocity(Vector3 start, Vector3 end, float t)
@@ -101,6 +103,7 @@ public class BallServer : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         if (!servePoint || !playerHead) return;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawLine(servePoint.position, playerHead.position);
     }
 }

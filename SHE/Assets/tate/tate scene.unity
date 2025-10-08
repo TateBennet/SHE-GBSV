@@ -1156,7 +1156,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1312232299}
   perVideoCues:
   - clip: {fileID: 0}
-    urlContains: VolleyballScene V1NEW_360.mp4
+    urlContains: VBSceneA.mp4
     cues:
     - timeSeconds: 97
       onCue:
@@ -1177,7 +1177,7 @@ MonoBehaviour:
       repeat: 0
       repeatInterval: 0
   - clip: {fileID: 0}
-    urlContains: VolleyballSceneV2.mp4
+    urlContains: VBSceneB.mp4
     cues:
     - timeSeconds: 32
       onCue:
