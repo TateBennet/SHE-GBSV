@@ -52,15 +52,21 @@ public class StreamVideos : MonoBehaviour
         }
 
         string path = Path.Combine(videoFolder, videoFiles[index]);
+
         if (!File.Exists(path))
         {
             Debug.LogError("Video not found: " + path);
             return;
         }
 
-        Debug.Log("Preparing video: " + path);
+        // Normalize to forward slashes and build a file:// URL so VideoPlayer.url is consistent
+        string normalized = path.Replace("\\", "/");
+        string url = "file:///" + normalized; // e.g., file:///C:/GBSV/VolleyballSceneV2B1.mp4
+
+        Debug.Log("Preparing video: " + url);
+
         videoPlayer.source = VideoSource.Url;
-        videoPlayer.url = path;
+        videoPlayer.url = url;
         videoPlayer.Pause();
         videoPlayer.Prepare(); // OnPrepared -> Play
     }
