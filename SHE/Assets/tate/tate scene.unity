@@ -1041,6 +1041,8 @@ MonoBehaviour:
   - VBSceneA.mp4
   - VBSceneB.mp4
   - VBSceneC.mp4
+  - VBSceneD.mp4
+  - VBSceneE.mp4
 --- !u!4 &1413691765
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,6 +1078,8 @@ MonoBehaviour:
   - VBSceneA.mp4
   - VBSceneB.mp4
   - VBSceneC.mp4
+  - VBSceneD.mp4
+  - VBSceneE.mp4
   fadeDuration: 1
   introSceneName: loading screen
   returnToIntroAtEnd: 1
