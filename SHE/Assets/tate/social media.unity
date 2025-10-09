@@ -768,6 +768,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 788835136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &972909078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327994315467310676, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178675330803743372, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
+      propertyPath: m_Name
+      value: Non AR Scene Helper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9853b0475a0968b4fb5c7d4667dd6be7, type: 3}
 --- !u!4 &1075807696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2863567331750335740, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
@@ -1584,7 +1641,7 @@ MonoBehaviour:
   - SocialMediaS4B.mp4
   - SocialMediaS5B.mp4
   fadeDuration: 0
-  introSceneName: loading screen
+  introSceneName: AR SceneTest
   returnToIntroAtEnd: 1
 --- !u!1 &1423712964
 GameObject:
@@ -1976,3 +2033,4 @@ SceneRoots:
   - {fileID: 1413691765}
   - {fileID: 1360864977}
   - {fileID: 1186109762}
+  - {fileID: 972909078}
