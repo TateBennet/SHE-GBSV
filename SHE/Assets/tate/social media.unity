@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &81987743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6894451142289397213, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-  m_PrefabInstance: {fileID: 788835136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &299639867
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311ba543d61a79e4487bc991b1ff6ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handVisual: {fileID: 81987743}
-  handPalm: {fileID: 1869207274}
+  handVisual: {fileID: 0}
+  handPalm: {fileID: 0}
   localPositionOffset: {x: 0, y: -0.0450999, z: 0.0941}
   localRotationOffset: {x: 65, y: 165, z: -30}
 --- !u!23 &445111311 stripped
@@ -758,14 +753,14 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3954094031570531440, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3488611594344598944, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1423712965}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
---- !u!4 &788835139 stripped
+--- !u!4 &788835137 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3488611594344598944, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 788835136}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &972909078
@@ -1443,8 +1438,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: -100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1674,7 +1669,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 788835139}
+  m_Father: {fileID: 788835137}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1423712966
 SphereCollider:
@@ -1792,11 +1787,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
   player: {fileID: 1312232299}
---- !u!4 &1869207274 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5408919155689928052, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-  m_PrefabInstance: {fileID: 788835136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2003569761
 GameObject:
   m_ObjectHideFlags: 0
