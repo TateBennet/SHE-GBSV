@@ -124,6 +124,144 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6894451142289397213, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 788835136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &106653182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106653183}
+  - component: {fileID: 106653185}
+  - component: {fileID: 106653184}
+  m_Layer: 0
+  m_Name: view msg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &106653183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106653182}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.0011, y: 0.0121, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445111313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &106653184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106653182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e322a0d4af174498e1a798cdbd9703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  player: {fileID: 1312232299}
+  phonebtn: {fileID: 615309933}
+--- !u!65 &106653185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106653182}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.074690275, y: 0.02, z: 0.015}
+  m_Center: {x: -0.0014236681, y: 0, z: 0}
+--- !u!1 &143164170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143164173}
+  - component: {fileID: 143164172}
+  - component: {fileID: 143164171}
+  m_Layer: 0
+  m_Name: share threat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &143164171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143164170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  streamVideos: {fileID: 1413691766}
+  pcvideos: {fileID: 1413691764}
+--- !u!65 &143164172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143164170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09, y: 0.02, z: 0.015}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &143164173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143164170}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
+  m_LocalPosition: {x: -0.0011, y: 0.0601, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445111313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299639867
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,10 +421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311ba543d61a79e4487bc991b1ff6ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phone: {fileID: 445111308}
   handVisual: {fileID: 81987743}
   handPalm: {fileID: 1869207274}
-  localPositionOffset: {x: 0, y: -0.0450999, z: 0.0941}
-  localRotationOffset: {x: 65, y: 165, z: -30}
+  localPositionOffset: {x: -0.0001921, y: -0.0537903, z: 0.1007461}
+  localRotationOffset: {x: 79, y: 184, z: -2.29}
 --- !u!23 &445111311 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 967672301998166825, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
@@ -311,20 +450,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenTextures:
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
-  - {fileID: 2800000, guid: 6eb86945359bbe44593e77892f1a6f09, type: 3}
-  - {fileID: 2800000, guid: c8259fb7732c65c4797e7ed9150d8478, type: 3}
+  - {fileID: 8400000, guid: 5530a47db12b39740abf55326b41563a, type: 2}
+  - {fileID: 2800000, guid: 0133a9ce40c23a3408dc58d7102e8853, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
-  - {fileID: 2800000, guid: 6df5dbc1b7a092f4aa952f9bc47ae91b, type: 3}
+  - {fileID: 2800000, guid: c1999eea63f956c46ad3e4ba8d7ea7ae, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
-  - {fileID: 2800000, guid: e9a8111664458b84b979947d1c4979d9, type: 3}
+  - {fileID: 2800000, guid: 1ffc0dffd9bd14e40abe930b5618d5ac, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
-  - {fileID: 2800000, guid: 2e25a04c65f750943a104682b233a68f, type: 3}
+  - {fileID: 2800000, guid: e07c4fbafdb9609489a7be56342d2fde, type: 3}
+  - {fileID: 2800000, guid: 5e8f46a9cc08da94e96f5a4b8b4a96b2, type: 3}
+  - {fileID: 2800000, guid: 16524d0fc2a998b46a2db2c795865d24, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: 3a7699d27f0b34542835178e90851669, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
-  - {fileID: 2800000, guid: 093f87b492a0c08479a5739cde9db637, type: 3}
+  - {fileID: 2800000, guid: 468f92fee654dd94b80109dd35699d08, type: 3}
+  - {fileID: 2800000, guid: b78441e8da7cecb4abf045436d5ee7c9, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   screenButtons:
-  - {fileID: 476550061}
+  - {fileID: 0}
   - {fileID: 581082540}
   - {fileID: 1830515283}
   - {fileID: 0}
@@ -332,14 +475,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 451093080}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 106653182}
   - {fileID: 615309933}
   - {fileID: 0}
   - {fileID: 2003569761}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 143164170}
+  - {fileID: 0}
   phoneRenderer: {fileID: 445111311}
   screenMaterialIndex: 1
-  fadeDuration: 0.5
+  fadeDuration: 0.1
 --- !u!1 &451093080
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,12 +499,12 @@ GameObject:
   - component: {fileID: 451093082}
   - component: {fileID: 451093084}
   m_Layer: 0
-  m_Name: tap4
+  m_Name: socials
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &451093082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -408,74 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
   streamVideos: {fileID: 1413691766}
---- !u!1 &476550061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 476550064}
-  - component: {fileID: 476550063}
-  - component: {fileID: 476550065}
-  m_Layer: 0
-  m_Name: tap0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &476550063
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476550061}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.75, y: 0.75, z: 0.75}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &476550064
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476550061}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: -0.0007, y: 0.0465, z: 0}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 445111313}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &476550065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476550061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111316}
-  player: {fileID: 1312232299}
+  pcvideos: {fileID: 1413691764}
 --- !u!1 &581082540
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,12 +568,12 @@ GameObject:
   - component: {fileID: 581082542}
   - component: {fileID: 581082544}
   m_Layer: 0
-  m_Name: tap1
+  m_Name: take pic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &581082542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -544,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
   streamVideos: {fileID: 1413691766}
+  pcvideos: {fileID: 1413691764}
 --- !u!1 &615309933
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,12 +637,12 @@ GameObject:
   - component: {fileID: 615309935}
   - component: {fileID: 615309937}
   m_Layer: 0
-  m_Name: tap5
+  m_Name: share
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &615309935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -612,6 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
   streamVideos: {fileID: 1413691766}
+  pcvideos: {fileID: 1413691764}
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,11 +850,264 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 788835136}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1075807696 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2863567331750335740, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-  m_PrefabInstance: {fileID: 788835136}
+--- !u!1 &895402923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 895402925}
+  - component: {fileID: 895402924}
+  m_Layer: 0
+  m_Name: audio source 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &895402924
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895402923}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &895402925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895402923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 1, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1063004280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063004282}
+  - component: {fileID: 1063004281}
+  m_Layer: 0
+  m_Name: audio source 0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1063004281
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063004280}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1063004282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063004280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1186109759
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +1117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186109762}
-  - component: {fileID: 1186109761}
   - component: {fileID: 1186109760}
   m_Layer: 0
   m_Name: game logic
@@ -808,14 +1142,50 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: SocialMediaS1.mp4
     cues:
-    - timeSeconds: 16
+    - timeSeconds: 10
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1186109761}
-            m_TargetAssemblyTypeName: PhoneSpawn, Assembly-CSharp
+          - m_Target: {fileID: 445111310}
+            m_TargetAssemblyTypeName: PhoneGrabber, Assembly-CSharp
             m_MethodName: ActivatePhone
             m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 17
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 22
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -851,8 +1221,20 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691766}
-            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 1
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1413691764}
+            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
@@ -887,6 +1269,18 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
           - m_Target: {fileID: 1413691766}
             m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
@@ -894,7 +1288,7 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
+              m_IntArgument: 2
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
@@ -922,6 +1316,24 @@ MonoBehaviour:
             m_CallState: 2
       repeat: 0
       repeatInterval: 0
+    - timeSeconds: 54
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 3
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 60
       onCue:
         m_PersistentCalls:
@@ -943,7 +1355,7 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: SocialMediaS4A.mp4
     cues:
-    - timeSeconds: 15
+    - timeSeconds: 2
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -961,7 +1373,43 @@ MonoBehaviour:
             m_CallState: 2
       repeat: 0
       repeatInterval: 0
-    - timeSeconds: 30
+    - timeSeconds: 12
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 22
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 4
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 25
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -972,7 +1420,7 @@ MonoBehaviour:
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
+              m_IntArgument: 4
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
@@ -994,6 +1442,117 @@ MonoBehaviour:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 22
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 6
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 26
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 5
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+  - clip: {fileID: 0}
+    urlContains: SocialMediaS5A.mp4
+    cues:
+    - timeSeconds: 5
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 22
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 445111316}
+            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
+            m_MethodName: TapButton
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 31
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1771444903}
+            m_TargetAssemblyTypeName: PhoneBtnMgr, Assembly-CSharp
+            m_MethodName: ActivateButton
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 7
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 35
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
+            m_MethodName: PauseVideo
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 7
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
@@ -1023,23 +1582,6 @@ MonoBehaviour:
       repeatInterval: 0
   toleranceSeconds: 0.05
   resetOnLoopOrSeekBack: 1
---- !u!114 &1186109761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186109759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d304c3db9d07b4d4c937851833837b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111308}
-  playerHead: {fileID: 1075807696}
-  distance: 0.6
-  verticalOffset: -0.1
-  facePlayer: 1
 --- !u!4 &1186109762
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,7 +1836,7 @@ VideoPlayer:
   - 1
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -1386,8 +1928,113 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: -100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1342466323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342466325}
+  - component: {fileID: 1342466324}
+  m_Layer: 0
+  m_Name: audio manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1342466324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342466323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df83b072f07daf44a3348113240b414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1312232299}
+  playlistScript: {fileID: 1413691764}
+  audioSources:
+  - {fileID: 1063004281}
+  - {fileID: 895402924}
+  videoAudioSets:
+  - name: scene1
+    clips:
+    - {fileID: 8300000, guid: 02a6e7337db74324cb330571bf2ecb41, type: 3}
+  - name: scene2
+    clips:
+    - {fileID: 8300000, guid: afaa0e252b6d04f47856b3041ec382f2, type: 3}
+  - name: scene3
+    clips:
+    - {fileID: 8300000, guid: 271d4d95e8da91e45b98986bb4252dca, type: 3}
+    - {fileID: 8300000, guid: e500d9891944f88499ba661f0a56bb41, type: 3}
+  - name: scene4a
+    clips:
+    - {fileID: 8300000, guid: c2ab8cee3b79f5f43a8b03ed03e95267, type: 3}
+    - {fileID: 8300000, guid: 8ef3b7baed10e1449be7f9c6056bcc72, type: 3}
+  - name: scene4b
+    clips:
+    - {fileID: 8300000, guid: 36455acbf6f740148a90e4f20532e977, type: 3}
+    - {fileID: 8300000, guid: f5654e52a12c98a44ab97b6b4b2074f0, type: 3}
+  - name: scene5a
+    clips:
+    - {fileID: 8300000, guid: ae3617fe5305f7140b2f28e46519c7e5, type: 3}
+    - {fileID: 8300000, guid: 3e071e7219997be4890ed7e73ce50c45, type: 3}
+  - name: scene5b
+    clips:
+    - {fileID: 8300000, guid: 09d97efd4fa71eb4ca012f5ee3d155ff, type: 3}
+    - {fileID: 8300000, guid: 21224c98222bcab40aa7b8c2d67e59a5, type: 3}
+  sourcePositionSets:
+  - name: 1
+    positions:
+    - {x: 0, y: 1, z: 0}
+  - name: 2
+    positions:
+    - {x: 0, y: 1, z: 0}
+  - name: 3
+    positions:
+    - {x: 0, y: 1, z: 0}
+    - {x: -4, y: 1, z: -2}
+  - name: 4a
+    positions:
+    - {x: 0, y: 1, z: 0}
+    - {x: -4, y: 1, z: -2}
+  - name: 4b
+    positions:
+    - {x: 0, y: 1, z: 0}
+    - {x: -4, y: 1, z: -2}
+  - name: 5a
+    positions:
+    - {x: 0, y: 1, z: 0}
+    - {x: -4, y: 1, z: -2}
+  - name: 5b
+    positions:
+    - {x: 0, y: 1, z: 0}
+    - {x: -4, y: 1, z: -2}
+  dspLeadSeconds: 0
+  startDelay: 0
+--- !u!4 &1342466325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342466323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8664556, y: -16.704952, z: -16.01809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1463,6 +2110,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: b59597790486f4840b76f888406178c5, type: 2}
+    - target: {fileID: 967672301998166825, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f2f7641672383ba48bd9a7045dfd0893, type: 2}
     - target: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       propertyPath: m_Name
       value: phone2k
@@ -1474,9 +2125,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 476550064}
     - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581082543}
@@ -1491,10 +2139,16 @@ PrefabInstance:
       addedObject: {fileID: 451093083}
     - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 106653183}
+    - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 615309936}
     - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2003569764}
+    - targetCorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 143164173}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
@@ -1544,6 +2198,7 @@ MonoBehaviour:
   - SocialMediaS3.mp4
   - SocialMediaS4A.mp4
   - SocialMediaS4B.mp4
+  - SocialMediaS5A.mp4
   - SocialMediaS5B.mp4
 --- !u!4 &1413691765
 Transform:
@@ -1582,6 +2237,7 @@ MonoBehaviour:
   - SocialMediaS3.mp4
   - SocialMediaS4A.mp4
   - SocialMediaS4B.mp4
+  - SocialMediaS5A.mp4
   - SocialMediaS5B.mp4
   fadeDuration: 0
   introSceneName: loading screen
@@ -1667,6 +2323,249 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1601310897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601310902}
+  - component: {fileID: 1601310901}
+  - component: {fileID: 1601310900}
+  - component: {fileID: 1601310899}
+  - component: {fileID: 1601310898}
+  m_Layer: 0
+  m_Name: next scene cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1601310898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601310897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8dd5ed334746b4c94f42eb8603c0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stream: {fileID: 1413691764}
+--- !u!65 &1601310899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601310897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1601310900
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601310897}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1601310901
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601310897}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1601310902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601310897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.558, y: 1.521, z: -0.073}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1675070888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675070890}
+  - component: {fileID: 1675070889}
+  m_Layer: 0
+  m_Name: snapchatScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &1675070889
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675070888}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 6b1a81d9613f1f044aed477c591928d8, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 5530a47db12b39740abf55326b41563a, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 0
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 01
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &1675070890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675070888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.006621, y: -2.8213859, z: -23.62401}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1771444902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771444904}
+  - component: {fileID: 1771444903}
+  m_Layer: 0
+  m_Name: phoneBtnMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1771444903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771444902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f88303c550ce6943aebdc78517e19d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phoneButtons:
+  - {fileID: 581082540}
+  - {fileID: 1830515283}
+  - {fileID: 2047043190}
+  - {fileID: 451093080}
+  - {fileID: 106653182}
+  - {fileID: 615309933}
+  - {fileID: 2003569761}
+  - {fileID: 143164170}
+--- !u!4 &1771444904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771444902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.006621, y: -2.8213859, z: -23.62401}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1830515283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,12 +2578,12 @@ GameObject:
   - component: {fileID: 1830515285}
   - component: {fileID: 1830515287}
   m_Layer: 0
-  m_Name: tap2
+  m_Name: send pic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1830515285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1750,28 +2649,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2003569764}
   - component: {fileID: 2003569763}
-  - component: {fileID: 2003569762}
+  - component: {fileID: 2003569765}
   m_Layer: 0
-  m_Name: tap6
+  m_Name: delete contact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2003569762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003569761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22514c54f026de649a2f025f906c564b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 445111316}
-  player: {fileID: 1312232299}
+  m_IsActive: 0
 --- !u!65 &2003569763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1808,6 +2693,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445111313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003569765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003569761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d31f5bc1353d0f458e4f9d62e710ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phone: {fileID: 445111316}
+  streamVideos: {fileID: 1413691766}
+  pcvideos: {fileID: 1413691764}
 --- !u!1 &2047043190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,12 +2720,12 @@ GameObject:
   - component: {fileID: 2047043192}
   - component: {fileID: 2047043194}
   m_Layer: 0
-  m_Name: tap3
+  m_Name: ignore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2047043192
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1876,6 +2776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
   streamVideos: {fileID: 1413691766}
+  pcvideos: {fileID: 1413691764}
 --- !u!1 &2092139007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,3 +2877,9 @@ SceneRoots:
   - {fileID: 1413691765}
   - {fileID: 1360864977}
   - {fileID: 1186109762}
+  - {fileID: 1675070890}
+  - {fileID: 1771444904}
+  - {fileID: 1601310902}
+  - {fileID: 1342466325}
+  - {fileID: 1063004282}
+  - {fileID: 895402925}

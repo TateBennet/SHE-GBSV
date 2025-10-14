@@ -19,6 +19,7 @@ public class StreamVideos : MonoBehaviour
 
     private int currentIndex = 0;
 
+
     void Awake()
     {
         if (!videoPlayer) videoPlayer = GetComponent<VideoPlayer>();
@@ -126,4 +127,7 @@ public class StreamVideos : MonoBehaviour
         if (videoPlayer.isPlaying) PauseVideo();
         else ResumeVideo();
     }
+
+    public int GetCurrentIndex() => currentIndex;
+
 }

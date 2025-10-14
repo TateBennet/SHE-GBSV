@@ -1,21 +1,22 @@
 using UnityEngine;
+using UnityEngine.Video;
 
-public class VideoProgressCollider : MonoBehaviour
+public class SpecificPhoneBTN : MonoBehaviour
 {
     public PhoneMaterialSwitch phone; // Drag the phone parent here
-    public QuestVideoPlaylist streamVideos;
-    public StreamVideos pcvideos;
+    public VideoPlayer player;
+    public GameObject phonebtn;
     private bool hasBeenTapped = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!hasBeenTapped && other.CompareTag("pointer"))
         {
+            if (!player.isPlaying) player.Play();
             hasBeenTapped = true;          // prevent multiple triggers
             phone.TapButton();
             gameObject.SetActive(false);   // disable this button right away
-            streamVideos.StartCoroutine("PlayNext");
-            //pcvideos.PlayNext();
+            phonebtn.SetActive(true);
         }
     }
 
