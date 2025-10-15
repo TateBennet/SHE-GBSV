@@ -33,10 +33,24 @@ public class QuestVideoPlaylist : MonoBehaviour
     private bool _textureBound = false;
     private Material _overlayMat;
 
+    // XR TRACKING INTEGRATION
+    private bool trackingStable = false;
+    private bool videoStarted = false; // Prevent duplicate starts
+
     private void Awake()
     {
+        // ORIGINAL SETUP - Keep this first
         if (!videoPlayer) videoPlayer = GetComponent<VideoPlayer>();
         if (!videoPlayer) { Log("❌ No VideoPlayer on this object."); enabled = false; return; }
+
+        // CRITICAL: Ensure targetSphere is on this GameObject
+        if (!targetSphere) targetSphere = GetComponent<Renderer>();
+        if (!targetSphere)
+        {
+            Log("❌ No Renderer (sphere) on this object. Add MeshRenderer component.");
+            enabled = false;
+            return;
+        }
 
         if (blackOverlay) _overlayMat = blackOverlay.material;
         SetOverlayAlpha(0f);
@@ -50,18 +64,70 @@ public class QuestVideoPlaylist : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
         EnsureMediaPermission();  // Android 13+ READ_MEDIA_VIDEO
 #endif
+
+        // XR INTEGRATION: Start waiting for tracking stability
+        StartCoroutine(WaitForXRTracking());
+
+        Log("✅ QuestVideoPlaylist initialized. Waiting for XR tracking...");
     }
 
+    // XR TRACKING WAIT - Only starts video ONCE after tracking stabilizes
+    private IEnumerator WaitForXRTracking()
+    {
+        Log("⏳ Waiting for XR tracking to stabilize...");
+
+        // Wait for XRTrackingResetManager OR timeout after 5 seconds
+        float timeout = 5f;
+        float elapsed = 0f;
+
+        while (elapsed < timeout)
+        {
+            var resetManager = Object.FindFirstObjectByType<XRTrackingResetManager>();
+            if (resetManager != null && resetManager.hasResetTracking)
+            {
+                Log("✅ XR tracking confirmed stable");
+                break;
+            }
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        if (elapsed >= timeout)
+        {
+            Log("⚠️ XR tracking timeout - starting video anyway");
+        }
+
+        trackingStable = true;
+        yield return new WaitForSeconds(0.5f); // Extra OpenXR stabilization
+
+        // START VIDEO ONLY IF NOT ALREADY STARTED
+        if (!videoStarted && files != null && files.Count > 0)
+        {
+            videoStarted = true;
+            _index = 0;
+            Log($"▶️ Starting playlist with {files.Count} files");
+            yield return PlayIndex(_index, fadeIn: true);
+        }
+        else if (files == null || files.Count == 0)
+        {
+            Log("❌ No files in playlist! Add filenames in Inspector.");
+        }
+    }
+
+    // MODIFIED Start() - Now just validates, doesn't start video
     private IEnumerator Start()
     {
+        // Wait for tracking stability before any validation
+        yield return new WaitUntil(() => trackingStable);
+
+        // Validation only - video already started by WaitForXRTracking
         if (files == null || files.Count == 0)
         {
             Log("❌ No filenames in playlist. Add them in the Inspector.");
             yield break;
         }
 
-        _index = 0;
-        yield return PlayIndex(_index, fadeIn: true);
+        Log("✅ Playlist validation complete");
     }
 
     public IEnumerator PlayNext()
@@ -114,6 +180,8 @@ public class QuestVideoPlaylist : MonoBehaviour
 
     private IEnumerator PlayIndex(int i, bool fadeIn)
     {
+        if (i >= files.Count) yield break;
+
         string fileName = Path.GetFileName(files[i]);
         string abs = PathCombine(ROOT, fileName);
         string url = "file://" + abs.Replace(" ", "%20");
@@ -163,6 +231,7 @@ public class QuestVideoPlaylist : MonoBehaviour
         if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", tex);
         if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", tex);
         _textureBound = true;
+        Log("✅ Video texture bound to sphere");
     }
 
     // ---------- Fades ----------
@@ -235,6 +304,7 @@ public class QuestVideoPlaylist : MonoBehaviour
         if (!p.StartsWith("/")) p = "/" + p;
         return p;
     }
+
     private static bool FileExistsSafe(string p)
     {
         try { return File.Exists(p); } catch { return false; }
@@ -242,7 +312,7 @@ public class QuestVideoPlaylist : MonoBehaviour
 
     private void Log(string msg)
     {
-        Debug.Log("[PlaylistFromQuestDownload] " + msg);
+        Debug.Log("[QuestVideoPlaylist] " + msg);
         if (statusText) statusText.text = msg;
     }
 }
