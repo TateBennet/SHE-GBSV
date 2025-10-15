@@ -873,8 +873,6 @@ GameObject:
   - component: {fileID: 1312232301}
   - component: {fileID: 1312232300}
   - component: {fileID: 1312232299}
-  - component: {fileID: 1312232305}
-  - component: {fileID: 1312232304}
   m_Layer: 0
   m_Name: VideoSphere
   m_TagString: Untagged
@@ -1000,49 +998,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312232298}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2013681596}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1312232304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312232298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3004ee0e3099c14c9911a78a97a2653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 1312232299}
-  targetSphere: {fileID: 1312232301}
-  blackOverlay: {fileID: 0}
-  statusText: {fileID: 0}
-  files:
-  - VBSceneA.mp4
-  - VBSceneB.mp4
-  - VBSceneC.mp4
-  fadeDuration: 0
-  introSceneName: Intro_Scene
-  returnToIntroAtEnd: 1
---- !u!114 &1312232305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312232298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e465dec029ce9f844890020d625cb902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphereRenderer: {fileID: 1312232301}
 --- !u!1 &1413691763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413691763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3004ee0e3099c14c9911a78a97a2653, type: 3}
   m_Name: 
@@ -1207,38 +1169,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.008
   m_Center: {x: 0.001, y: -0.003, z: -0.003}
---- !u!1 &2013681595
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2013681596}
-  m_Layer: 0
-  m_Name: WorldAnchor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2013681596
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013681595}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1312232303}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2058710580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,10 +1445,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tate custom XR Rig
       objectReference: {fileID: 0}
-    - target: {fileID: 4028056195661319202, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-      propertyPath: m_RequestedTrackingOriginMode
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4512382145507464480, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -1538,64 +1464,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1902961939}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3488611594344598947, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7412725959385624049}
-    - targetCorrespondingSourceObject: {fileID: 3488611594344598947, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7412725959385624048}
-    - targetCorrespondingSourceObject: {fileID: 3488611594344598947, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7412725959385624050}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
 --- !u!4 &7412725959385624046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7871329179355691920, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
   m_PrefabInstance: {fileID: 7412725959385624045}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7412725959385624047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3488611594344598947, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
-  m_PrefabInstance: {fileID: 7412725959385624045}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7412725959385624048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7412725959385624047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a51675e4c1ef34e83d720950b84e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7412725959385624049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7412725959385624047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a275339a65cde9c43b78001b19995b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasResetTracking: 0
---- !u!114 &7412725959385624050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7412725959385624047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83208608ceabab74fbd37835993ace05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1605,7 +1480,7 @@ SceneRoots:
   - {fileID: 2092139010}
   - {fileID: 1249617921}
   - {fileID: 886719432}
-  - {fileID: 2013681596}
+  - {fileID: 1312232303}
   - {fileID: 2058710582}
   - {fileID: 1169211012}
   - {fileID: 1413691765}
