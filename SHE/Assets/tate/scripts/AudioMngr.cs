@@ -22,7 +22,7 @@ public class AudioMngr : MonoBehaviour
 {
     [Header("References")]
     public VideoPlayer videoPlayer;
-    public StreamVideos playlistScript;
+    public QuestVideoPlaylist playlistScript;
     public AudioSource[] audioSources;  // manually assigned, anywhere in the scene
 
     [Header("Audio Sets (clips for each video)")]

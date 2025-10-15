@@ -245,4 +245,6 @@ public class QuestVideoPlaylist : MonoBehaviour
         Debug.Log("[PlaylistFromQuestDownload] " + msg);
         if (statusText) statusText.text = msg;
     }
+
+    public int GetCurrentIndex() => _index;
 }
