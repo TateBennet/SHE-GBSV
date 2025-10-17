@@ -9,6 +9,7 @@ TagManager:
   - pointer
   - phoneButton
   - Hand
+  - Floor
   layers:
   - Default
   - TransparentFX
