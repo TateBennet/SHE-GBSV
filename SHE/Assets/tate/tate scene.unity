@@ -516,7 +516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &299639868
 Light:
   m_ObjectHideFlags: 0
@@ -528,7 +528,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3521,12 +3521,12 @@ VideoPlayer:
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 3
+  m_RenderMode: 4
   m_AspectRatio: 2
   m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -3852,13 +3852,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1312232299}
   videoFiles:
-  - C:\GBSV\VBSceneA.mp4
-  - C:\GBSV\VBSceneB.mp4
-  - C:\GBSV\VBSceneBFail.mp4
-  - C:\GBSV\VBSceneBPass.mp4
-  - C:\GBSV\VBSceneBPass2.mp4
-  - C:\GBSV\VBSceneC.mp4
-  - C:\GBSV\VBSceneD.mp4
+  - /sdcard/Download/VBSceneA.mp4
+  - /sdcard/Download/VBSceneB.mp4
+  - /sdcard/Download/VBSceneBFail.mp4
+  - /sdcard/Download/VBSceneBPass.mp4
+  - /sdcard/Download/VBSceneBPass2.mp4
+  - /sdcard/Download/VBSceneC.mp4
+  - /sdcard/Download/VBSceneD.mp4
   currentVideoIndex: -1
   currentVideoName: 
 --- !u!1 &1494650021
