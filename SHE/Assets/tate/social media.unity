@@ -1963,7 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1312232299}
-  playlistScript: {fileID: 1413691764}
+  playlistScript: {fileID: 1413691766}
   audioSources:
   - {fileID: 1063004281}
   - {fileID: 895402924}
@@ -2355,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8dd5ed334746b4c94f42eb8603c0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stream: {fileID: 1413691764}
+  stream: {fileID: 0}
 --- !u!65 &1601310899
 BoxCollider:
   m_ObjectHideFlags: 0
