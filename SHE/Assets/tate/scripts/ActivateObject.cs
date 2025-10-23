@@ -3,10 +3,16 @@ using UnityEngine;
 public class ActivateObject : MonoBehaviour
 {
 
-    public GameObject item;
+    public GameObject itemToActivate;
+    public GameObject itemToDeactivate;
 
-    public void ActivatePhone()
+    public void ActivateItem()
     {
-        item.SetActive(true);
+        itemToActivate.SetActive(true);
+    }
+
+    public void DisableItem()
+    {
+        itemToDeactivate.SetActive(false);
     }
 }
