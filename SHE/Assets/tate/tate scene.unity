@@ -5938,6 +5938,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168999251777488610, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 168999251777488610, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d4be41a1bffd4c23a37e05fa34360ab, type: 2}
     - target: {fileID: 358947168695055287, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       propertyPath: m_HandMeshMaterial
       value: 
@@ -5994,6 +6002,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 5969182820778730557, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969182820778730557, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 370e93876c8724bc1877b021fef179da, type: 2}
+    - target: {fileID: 5969182820778730557, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d4be41a1bffd4c23a37e05fa34360ab, type: 2}
     - target: {fileID: 7472501742097009811, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       propertyPath: m_TagString
       value: Hand

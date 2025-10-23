@@ -14,9 +14,11 @@ public class VballSFX : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+
         // hand hit
         if (collision.collider.CompareTag("Hand") && Time.time - lastHitTime > cooldown)
         {
+
             lastHitTime = Time.time;
             audioSource.PlayOneShot(hitSound);
             counter++;
