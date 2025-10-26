@@ -15,7 +15,7 @@ public class AnimMngr : MonoBehaviour
     [Header("Animations to Play")]
     public List<TimedAnimation> animations = new List<TimedAnimation>();
 
-    private void Start()
+    public void StartAnimations()
     {
         foreach (var anim in animations)
         {
