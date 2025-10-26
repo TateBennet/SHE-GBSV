@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 6913931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 1.7706404, z: -2.835}
+  m_LocalPosition: {x: -0.039, y: 1.7706404, z: -2.265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1224,7 +1224,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Objective
+  m_Text: 'Objective: Bump the ball'
 --- !u!222 &532517345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2388,8 +2388,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Press this button \nand the ball will be served to you.\n \nWhen you bump
-    it the next scene will begin."
+  m_Text: 'Press this button to have the volleyball served to you.
+
+
+    A successful
+    bump will move you to the next scene'
 --- !u!222 &856931779
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2531,11 +2534,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe58617fba6d8c846950d4a1afb45df1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.658
+      value: 0.639
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe58617fba6d8c846950d4a1afb45df1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.782
+      value: -2.291
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe58617fba6d8c846950d4a1afb45df1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3245,7 +3248,6 @@ GameObject:
   - component: {fileID: 1015233686}
   - component: {fileID: 1015233685}
   - component: {fileID: 1015233684}
-  - component: {fileID: 1015233683}
   m_Layer: 0
   m_Name: Begin
   m_TagString: Untagged
@@ -3253,28 +3255,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1015233683
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015233682}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3166d3821bb9734881617aaf7227c5d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1015233684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,8 +3344,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015233682}
-  m_LocalRotation: {x: -0, y: 0.9437852, z: -0, w: 0.3305596}
-  m_LocalPosition: {x: 0, y: 0, z: -0.499}
+  m_LocalRotation: {x: 0, y: 0.97057563, z: -0.24079663, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.427}
   m_LocalScale: {x: 0.00125, y: 0.00125, z: 0.00125}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3374,10 +3354,10 @@ RectTransform:
   - {fileID: 1411240091}
   - {fileID: 239002014}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 141.395, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.867, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.374, y: 1.285}
+  m_AnchoredPosition: {x: -0.007, y: 1.122}
   m_SizeDelta: {x: 400, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1030099721
@@ -4781,11 +4761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032176635680216034, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.679002
+      value: 0.631
       objectReference: {fileID: 0}
     - target: {fileID: 3032176635680216034, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.7734258
+      value: -2.237
       objectReference: {fileID: 0}
     - target: {fileID: 3032176635680216034, guid: 4b658ae02ca4e154f80cea2d74db1ef1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5225,9 +5205,9 @@ MonoBehaviour:
   servePoint: {fileID: 1245316465}
   playerHead: {fileID: 7412725959385624051}
   respawnEachServe: 0
-  timeToTarget: 1.5
-  targetOffset: {x: 0, y: -0.2, z: 0.5}
-  horizontalJitter: 0.25
+  timeToTarget: 1.6
+  targetOffset: {x: 0, y: -0.25, z: 0.25}
+  horizontalJitter: 0.15
   useGravity: 1
   interpolation: 1
   collisionMode: 1
@@ -6261,6 +6241,10 @@ PrefabInstance:
       propertyPath: m_HandMeshMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 370e93876c8724bc1877b021fef179da, type: 2}
+    - target: {fileID: 2710712333586785871, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3488611594344598944, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

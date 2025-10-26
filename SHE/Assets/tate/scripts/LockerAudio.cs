@@ -21,6 +21,7 @@ public class LockerAudio : MonoBehaviour
 
     private bool hasTriggeredNext = false;
     private bool audioStarted = false;
+    private bool wasPlaying = false;
 
     public void Play()
     {
@@ -43,17 +44,19 @@ public class LockerAudio : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        // Wait for audio to start before checking
-        if (audioStarted && audioSource != null && !hasTriggeredNext && audioSource.clip != null)
+        if (audioSource == null) return;
+
+        // Detect when it stops playing after being active
+        if (wasPlaying && !audioSource.isPlaying)
         {
-            // If audio finished playing
-            if (!audioSource.isPlaying && audioSource.time >= audioSource.clip.length - 0.05f)
-            {
-                hasTriggeredNext = true;
-                OnAudioComplete();
-            }
+            OnAudioComplete();
+            wasPlaying = false; // Prevent repeated triggers
+        }
+        else if (audioSource.isPlaying)
+        {
+            wasPlaying = true;
         }
     }
 
