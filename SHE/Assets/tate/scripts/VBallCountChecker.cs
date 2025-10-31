@@ -5,10 +5,17 @@ public class VBallCountChecker : MonoBehaviour
 {
     public float functionDelay = 3f;
     public ProVidMngr ProVidMngr;
+    private int failVid1 = 0;
+    private int failVid2 = 0;
+    private int failVid3 = 0;
 
     public void CheckCounter()
     {
-        if (VballSFX.counter == 0)
+        if(failVid1 > 3 || failVid2 > 3 || failVid3 > 3)
+        {
+            StartCoroutine(DelayedFunction(OnThirdHit));
+        }
+        else if (VballSFX.counter == 0)
         {
             StartCoroutine(DelayedFunction(OnMissedBall));
         }
@@ -40,18 +47,21 @@ public class VBallCountChecker : MonoBehaviour
     {
         Debug.Log("Failed attempt, try again...");
         ProVidMngr.PlayVideoByIndex(2);
+        failVid1++;
     }
 
     void OnFirstHit()
     {
         Debug.Log("Successful hit 1/3 - moving on...");
         ProVidMngr.PlayVideoByIndex(3);
+        failVid2++;
     }
 
     void OnSecondHit()
     {
         Debug.Log("successful hit 2/3 - moving on...");
         ProVidMngr.PlayVideoByIndex(4);
+        failVid3++;
     }
 
     void OnThirdHit()
