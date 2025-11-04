@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.XR;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 using UnityEngine.Android;
@@ -56,11 +57,25 @@ public class DuoStreamPro : MonoBehaviour
 #endif
     }
 
+    //private void Start()
+    //{
+    //    if (videoFiles.Count > 0)
+    //        PlayVideoByIndex(0, 1);
+    //}
+
     private void Start()
     {
         if (videoFiles.Count > 0)
-            PlayVideoByIndex(0);
+            StartCoroutine(DelayedStart());
     }
+
+    private IEnumerator DelayedStart()
+    {
+        // Wait 1–2 seconds for XR to fully initialize
+        yield return new WaitForSeconds(2f);
+        PlayVideoByIndex(0,1);
+    }
+
 
     public void PlayVideoByIndex(int index, int? nextIndexOverride = null)
     {
@@ -72,6 +87,7 @@ public class DuoStreamPro : MonoBehaviour
 
         StartCoroutine(PrepareAndPlay(index, nextIndexOverride));
     }
+
 
     private IEnumerator PrepareAndPlay(int index, int? nextIndexOverride)
     {
