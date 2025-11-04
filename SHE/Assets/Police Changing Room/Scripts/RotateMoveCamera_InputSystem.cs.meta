@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a5e1a4e4a0435ba4386d2b28387e8bdd
+AssetOrigin:
+  serializedVersion: 1
+  productId: 129417
+  packageName: Police Changing Room
+  packageVersion: 1.3
+  assetPath: Assets/Police Changing Room/Scripts/RotateMoveCamera_InputSystem.cs
+  uploadId: 790156
