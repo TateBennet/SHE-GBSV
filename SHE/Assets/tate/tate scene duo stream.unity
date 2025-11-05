@@ -886,6 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422498312}
   - component: {fileID: 422498311}
+  - component: {fileID: 422498313}
   m_Layer: 0
   m_Name: scene loader
   m_TagString: Untagged
@@ -921,6 +922,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &422498313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422498310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7b8dfb56fb7904a9184e2e41588a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purgeFrames: 60
 --- !u!1 &435947553
 GameObject:
   m_ObjectHideFlags: 0
