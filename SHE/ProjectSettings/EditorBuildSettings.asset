@@ -6,10 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Trinh/XRTransition.unity
-    guid: 8d0c48c87ac09384593a9951f513b80a
-  - enabled: 1
-    path: Assets/Trinh/LockerRoom.unity
+    path: Assets/Trinh/Scenes/LockerRoom.unity
     guid: 915f2aefdde158943b709f643ff264f5
   - enabled: 1
     path: Assets/tate/tate scene duo stream.unity
