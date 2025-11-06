@@ -29,26 +29,28 @@ public class DuoStreamPro : MonoBehaviour
     public Renderer sphereA;
     public Renderer sphereB;
 
-    // Convenience accessors
-    public VideoPlayer GetActivePlayer() => usingA ? playerA : playerB;
-    public VideoPlayer GetStandbyPlayer() => usingA ? playerB : playerA;
-    public Renderer GetActiveSphere() => usingA ? sphereA : sphereB;
-    public Renderer GetStandbySphere() => usingA ? sphereB : sphereA;
+    // which player is currently active
+    private bool usingA = true;
 
+    // track which index is actually prepared on each player
+    private int preparedIndexA = -1;
+    private int preparedIndexB = -1;
 
     public event Action OnVideoChanged;
     public event Action OnVideoPaused;
-    public event Action OnVideoResumed;
-    public event Action OnVideoRestarted;
-    public event Action OnVideoSeeked;
 
-    private bool usingA = true; // which player is currently active
 
+
+    // convenience
     private VideoPlayer ActivePlayer => usingA ? playerA : playerB;
     private VideoPlayer StandbyPlayer => usingA ? playerB : playerA;
+    private Renderer ActiveSphere => usingA ? sphereA : sphereB;
+    private Renderer StandbySphere => usingA ? sphereB : sphereA;
 
-
-    private int? nextVideoOverride = null;
+    public VideoPlayer GetActivePlayer() => ActivePlayer;
+    public VideoPlayer GetStandbyPlayer() => StandbyPlayer;
+    public Renderer GetActiveSphere() => ActiveSphere;
+    public Renderer GetStandbySphere() => StandbySphere;
 
     private void Awake()
     {
@@ -57,26 +59,68 @@ public class DuoStreamPro : MonoBehaviour
 #endif
     }
 
-    //private void Start()
-    //{
-    //    if (videoFiles.Count > 0)
-    //        PlayVideoByIndex(0, 1);
-    //}
-
     private void Start()
     {
+        playerA.playbackSpeed = 1.0f;
+        playerB.playbackSpeed = 1.0f;
+        playerA.skipOnDrop = true;
+        playerB.skipOnDrop = true;
+
         if (videoFiles.Count > 0)
-            StartCoroutine(DelayedStart());
+            StartCoroutine(PrepareAndStartFirstVideo());
     }
 
-    private IEnumerator DelayedStart()
+    /// <summary>
+    /// Prepares the first video fully before starting playback.
+    /// </summary>
+    private IEnumerator PrepareAndStartFirstVideo()
     {
-        // Wait 1–2 seconds for XR to fully initialize
-        yield return new WaitForSeconds(2f);
-        PlayVideoByIndex(0,1);
+        int firstIndex = 0;
+
+        Debug.Log("🎥 Preparing first video: " + videoFiles[firstIndex]);
+
+        var firstPlayer = playerA;
+        var firstSphere = sphereA;
+
+        firstPlayer.url = videoFiles[firstIndex];
+        firstPlayer.Prepare();
+
+        float timeout = 30f;
+        float timer = 0f;
+        while (!firstPlayer.isPrepared && timer < timeout)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        if (!firstPlayer.isPrepared)
+        {
+            Debug.LogWarning("❌ First video failed to prepare: " + videoFiles[firstIndex]);
+            yield break;
+        }
+
+        Debug.Log("✅ First video prepared. Starting playback...");
+
+        // Bind texture to sphere
+        TryBindTextureTo(firstPlayer, firstSphere);
+        firstSphere.enabled = true;
+        sphereB.enabled = false;
+
+        usingA = true;
+        currentVideoIndex = firstIndex;
+        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[firstIndex]);
+
+        firstPlayer.Play();
+        OnVideoChanged?.Invoke();
+
+        // Preload the next one
+        PrepareNextVideo(1);
     }
 
-
+    /// <summary>
+    /// Public way to ask for a clip by index. This now attempts an instant swap
+    /// if the standby player already has that clip prepared.
+    /// </summary>
     public void PlayVideoByIndex(int index, int? nextIndexOverride = null)
     {
         if (index < 0 || index >= videoFiles.Count)
@@ -85,9 +129,34 @@ public class DuoStreamPro : MonoBehaviour
             return;
         }
 
+        // FAST PATH: is the standby already prepared with this clip?
+        if (IsStandbyPreparedFor(index))
+        {
+            InstantSwapToStandby(index, nextIndexOverride);
+            return;
+        }
+
+        // otherwise do the normal prepare+play path
         StartCoroutine(PrepareAndPlay(index, nextIndexOverride));
     }
 
+    /// <summary>
+    /// Explicit public preload – useful for interaction scripts
+    /// that know they'll want a specific clip in a couple seconds.
+    /// </summary>
+    public void PreloadVideo(int index)
+    {
+        if (index < 0 || index >= videoFiles.Count) return;
+
+        // already current
+        if (index == currentVideoIndex) return;
+
+        // already on standby?
+        if (IsStandbyPreparedFor(index)) return;
+
+        // preload it on the standby player
+        StartCoroutine(PreloadOnStandby(index));
+    }
 
     private IEnumerator PrepareAndPlay(int index, int? nextIndexOverride)
     {
@@ -95,7 +164,7 @@ public class DuoStreamPro : MonoBehaviour
         currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
 
         var active = ActivePlayer;
-        var activeSphere = GetActiveSphere();
+        var activeSphere = ActiveSphere;
 
         active.Stop();
         active.url = videoFiles[index];
@@ -115,20 +184,49 @@ public class DuoStreamPro : MonoBehaviour
             yield break;
         }
 
+        // mark prepared index for the active player
+        SetPreparedIndexFor(active, index);
+
         // Bind texture
         TryBindTextureTo(active, activeSphere);
 
-        // Activate correct sphere
+        // show active sphere, hide the other
         activeSphere.enabled = true;
-        GetStandbySphere().enabled = false;
+        StandbySphere.enabled = false;
 
         active.Play();
         OnVideoChanged?.Invoke();
 
-        // Preload next
+        // Preload whatever should be next
         PrepareNextVideo(nextIndexOverride);
     }
 
+    /// <summary>
+    /// Called whenever we successfully swap to the standby that already had the clip.
+    /// </summary>
+    private void InstantSwapToStandby(int index, int? nextIndexOverride)
+    {
+        // hide current sphere
+        ActiveSphere.enabled = false;
+        // show standby sphere
+        StandbySphere.enabled = true;
+
+        // flip active flag
+        usingA = !usingA;
+
+        // actually play
+        ActivePlayer.Play();
+
+        currentVideoIndex = index;
+        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
+        OnVideoChanged?.Invoke();
+
+        // active player is definitely prepared for this index
+        SetPreparedIndexFor(ActivePlayer, index);
+
+        // load next
+        PrepareNextVideo(nextIndexOverride);
+    }
 
     private void PrepareNextVideo(int? nextIndexOverride = null)
     {
@@ -138,13 +236,16 @@ public class DuoStreamPro : MonoBehaviour
             ? nextIndexOverride.Value
             : (currentVideoIndex + 1) % videoFiles.Count;
 
+        // don't double-preload if it's already on standby
+        if (IsStandbyPreparedFor(nextIndex)) return;
+
         StartCoroutine(PreloadOnStandby(nextIndex));
     }
 
     private IEnumerator PreloadOnStandby(int index)
     {
         var standby = StandbyPlayer;
-        var standbySphere = GetStandbySphere();
+        var standbySphere = StandbySphere;
 
         standby.Stop();
         standby.url = videoFiles[index];
@@ -164,15 +265,22 @@ public class DuoStreamPro : MonoBehaviour
             yield break;
         }
 
+        // mark which index is on this standby
+        SetPreparedIndexFor(standby, index);
+
+        // we don't show this sphere yet, but we *do* bind so texture is ready
         TryBindTextureTo(standby, standbySphere);
     }
 
+    /// <summary>
+    /// Original "next" behaviour – still works and benefits from the tracking.
+    /// </summary>
     public void PlayNextVideo()
     {
         if (videoFiles.Count == 0) return;
 
         var standby = StandbyPlayer;
-        var standbySphere = GetStandbySphere();
+        var standbySphere = StandbySphere;
 
         if (!standby.isPrepared || standby.texture == null)
         {
@@ -182,10 +290,10 @@ public class DuoStreamPro : MonoBehaviour
         }
 
         // swap visible spheres
-        GetActiveSphere().enabled = false;
+        ActiveSphere.enabled = false;
         standbySphere.enabled = true;
 
-        // swap active flags
+        // swap active
         usingA = !usingA;
 
         standby.Play();
@@ -193,9 +301,11 @@ public class DuoStreamPro : MonoBehaviour
         currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[currentVideoIndex]);
         OnVideoChanged?.Invoke();
 
+        // mark active as prepared for current
+        SetPreparedIndexFor(ActivePlayer, currentVideoIndex);
+
         PrepareNextVideo();
     }
-
 
     public void PlayPreviousVideo()
     {
@@ -214,30 +324,7 @@ public class DuoStreamPro : MonoBehaviour
         }
     }
 
-    public void ResumeVideo()
-    {
-        if (!ActivePlayer.isPlaying)
-        {
-            ActivePlayer.Play();
-            OnVideoResumed?.Invoke();
-        }
-    }
-
     public void StopVideo() => ActivePlayer.Stop();
-
-    public void RestartVideo()
-    {
-        ActivePlayer.time = 0;
-        ActivePlayer.Play();
-        OnVideoRestarted?.Invoke();
-    }
-
-    public void SeekVideo(double newTime)
-    {
-        ActivePlayer.time = newTime;
-        ActivePlayer.Play();
-        OnVideoSeeked?.Invoke();
-    }
 
     public int GetCurrentVideoIndex() => currentVideoIndex;
     public string GetCurrentVideoName() => currentVideoName;
@@ -254,7 +341,26 @@ public class DuoStreamPro : MonoBehaviour
             mat.SetTexture("_MainTex", vp.texture);
     }
 
+    private bool IsStandbyPreparedFor(int index)
+    {
+        // if active is A, standby is B
+        if (usingA)
+        {
+            return preparedIndexB == index && playerB.isPrepared;
+        }
+        else
+        {
+            return preparedIndexA == index && playerA.isPrepared;
+        }
+    }
 
+    private void SetPreparedIndexFor(VideoPlayer vp, int index)
+    {
+        if (vp == playerA)
+            preparedIndexA = index;
+        else if (vp == playerB)
+            preparedIndexB = index;
+    }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
     private void EnsureMediaPermission()

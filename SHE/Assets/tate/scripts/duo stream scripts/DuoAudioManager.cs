@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Video;
 
 [System.Serializable]
@@ -7,8 +8,7 @@ public class DuoVideoAudioGroup
 {
     [Tooltip("Name of the video this set belongs to (match loosely to the video file name).")]
     public string videoName;
-
-    [Tooltip("Audio sources to enable when this video plays.")]
+    [Tooltip("Audio sources to play when this video plays.")]
     public List<AudioSource> audioSources = new List<AudioSource>();
 }
 
@@ -20,135 +20,145 @@ public class DuoAudioManager : MonoBehaviour
     [Header("Audio Groups")]
     public List<DuoVideoAudioGroup> duoVideoAudioGroups = new List<DuoVideoAudioGroup>();
 
-    [Header("Auto-Sync Settings")]
-    [Tooltip("How long to actively correct timing at video start.")]
-    public float syncWindowDuration = 0.5f;
-    [Tooltip("Max allowed mismatch before correction (seconds).")]
+    [Header("Sync Settings")]
+    [Tooltip("Maximum allowed drift before correcting (seconds).")]
     public float syncTolerance = 0.03f;
 
     private List<AudioSource> activeSources = new List<AudioSource>();
-    private bool syncing = false;
-    private float syncTimer = 0f;
-
     private VideoPlayer currentPlayer;
+    private DuoVideoAudioGroup _pendingGroup;
+
+    private bool syncingActive = false;
 
     void Start()
     {
-        if (videoStreamManager == null)
+        if (!videoStreamManager)
         {
-            Debug.LogWarning("AudioManager: No VideoStreamManager assigned.");
+            Debug.LogWarning("DuoAudioManager: Missing DuoStreamPro reference!");
             return;
         }
 
-        // Subscribe to video manager events
         videoStreamManager.OnVideoChanged += HandleVideoChanged;
-        videoStreamManager.OnVideoPaused += PauseAllAudio;
-        videoStreamManager.OnVideoResumed += ResumeAllAudio;
-        videoStreamManager.OnVideoRestarted += RestartAudio;
-        videoStreamManager.OnVideoSeeked += RestartAudio;
+        videoStreamManager.OnVideoPaused += PauseAll;
 
-        // Initialize the active player reference
         currentPlayer = videoStreamManager.GetActivePlayer();
+        if (currentPlayer) HandleVideoChanged();
+    }
+
+    private void OnDestroy()
+    {
+        if (!videoStreamManager) return;
+
+        videoStreamManager.OnVideoChanged -= HandleVideoChanged;
+        videoStreamManager.OnVideoPaused -= PauseAll;
     }
 
     private void HandleVideoChanged()
     {
-        // Refresh current player on every video switch
         currentPlayer = videoStreamManager.GetActivePlayer();
-        UpdateAudioForCurrentVideo();
-    }
 
-    public void UpdateAudioForCurrentVideo()
-    {
-        // Disable previous audio
         foreach (var src in activeSources)
-            if (src) src.gameObject.SetActive(false);
-
+            if (src) src.Stop();
         activeSources.Clear();
 
-        string currentName = NormalizeName(videoStreamManager.GetCurrentVideoName());
-        if (string.IsNullOrEmpty(currentName)) return;
+        string name = Normalize(videoStreamManager.GetCurrentVideoName());
+        if (string.IsNullOrEmpty(name)) return;
 
-        DuoVideoAudioGroup group = duoVideoAudioGroups.Find(g =>
-            NormalizeName(g.videoName) == currentName);
-
-        if (group != null)
+        var group = duoVideoAudioGroups.Find(g => Normalize(g.videoName) == name);
+        if (group == null)
         {
-            foreach (var src in group.audioSources)
-            {
-                if (src)
-                {
-                    src.gameObject.SetActive(true);
-                    src.Play();
-                    activeSources.Add(src);
-                }
-            }
-
-            // Begin short sync window
-            syncing = true;
-            syncTimer = 0f;
-        }
-        else
-        {
-            Debug.Log($"No audio group found for video '{currentName}'");
-        }
-    }
-
-    void Update()
-    {
-        if (!syncing || videoStreamManager == null || !videoStreamManager.IsPlaying() || currentPlayer == null)
+            Debug.Log($"DuoAudioManager: No audio group found for video '{name}'");
             return;
-
-        double videoTime = currentPlayer.time;
-        syncTimer += Time.unscaledDeltaTime;
-
-        foreach (var src in activeSources)
-        {
-            if (src && src.clip != null && src.isPlaying)
-            {
-                float diff = (float)(videoTime - src.time);
-                if (Mathf.Abs(diff) > syncTolerance)
-                    src.time = (float)videoTime;
-            }
         }
 
-        if (syncTimer >= syncWindowDuration)
-            syncing = false;
+        _pendingGroup = group;
+        StartAudioThenVideo();
     }
 
-    public void PauseAllAudio()
+    private void StartAudioThenVideo()
+    {
+        if (_pendingGroup == null || currentPlayer == null)
+        {
+            Debug.LogWarning("No pending audio group or player when trying to start playback.");
+            return;
+        }
+
+        // 🔊 1. Schedule audio precisely on DSP clock
+        double dspNow = AudioSettings.dspTime;
+        double scheduledStart = dspNow + 0.1; // small buffer
+
+        foreach (var src in _pendingGroup.audioSources)
+        {
+            if (!src) continue;
+            src.Stop();
+            src.time = 0f;
+            src.PlayScheduled(scheduledStart);
+            activeSources.Add(src);
+        }
+
+        // 🎥 2. Start video immediately (it will catch up)
+        currentPlayer.Play();
+
+        // 3. Begin sync loop
+        syncingActive = true;
+        Debug.Log($"🎬 Audio scheduled at {scheduledStart:F3}s DSP; Sync enabled.");
+    }
+
+    private void PauseAll()
     {
         foreach (var src in activeSources)
             if (src && src.isPlaying)
                 src.Pause();
     }
 
-    public void ResumeAllAudio()
+    private void ResumeAll()
     {
         foreach (var src in activeSources)
             if (src && !src.isPlaying)
                 src.UnPause();
     }
 
-    public void RestartAudio()
+    private void RestartAll()
     {
-        if (currentPlayer == null) return;
-
         foreach (var src in activeSources)
         {
-            if (src)
-            {
-                src.Stop();
-                src.time = (float)currentPlayer.time;
-                src.Play();
-            }
+            if (!src) continue;
+            src.Stop();
+            src.time = 0f;
+            src.Play();
+        }
+        syncingActive = true;
+    }
+
+    void Update()
+    {
+        if (!syncingActive || currentPlayer == null || activeSources.Count == 0) return;
+
+        // just use the first audio source as master
+        var src = activeSources[0];
+        if (!src || !src.isPlaying) return;
+
+        double videoTime = currentPlayer.time;
+        double audioTime = src.time;   // this exists per AudioSource
+
+        float drift = (float)(videoTime - audioTime);
+
+        if (Mathf.Abs(drift) > syncTolerance)
+        {
+            currentPlayer.time = Mathf.Clamp((float)audioTime, 0f, (float)currentPlayer.length);
+            currentPlayer.Play();
+            Debug.Log($"🔧 Corrected drift: {drift:F3}s");
+        }
+        else
+        {
+            syncingActive = false;
+            Debug.Log($"✅ Locked sync (drift {drift:F3}s)");
         }
     }
 
-    private string NormalizeName(string input)
+    private string Normalize(string s)
     {
-        if (string.IsNullOrEmpty(input)) return "";
-        return input.Trim().ToLower().Replace("_", "").Replace(" ", "");
+        if (string.IsNullOrEmpty(s)) return "";
+        return s.Trim().ToLower().Replace("_", "").Replace(" ", "");
     }
 }
-
