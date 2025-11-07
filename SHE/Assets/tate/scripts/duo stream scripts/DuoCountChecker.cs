@@ -18,7 +18,7 @@ public class DuoCountChecker : MonoBehaviour
         else if (VballSFX.counter == 0 || VballSFX.failed == true)
         {
             DSP.PreloadVideo(2);   // we call PlayVideoByIndex(2,3)
-            StartCoroutine(DelayedFunction(OnMissedBall));
+            StartCoroutine(DelayedFunction(OnMissedBall));  
         }
         else if (VballSFX.counter == 1)
         {
@@ -76,24 +76,24 @@ public class DuoCountChecker : MonoBehaviour
     void OnMissedBall()
     {
         Debug.Log("Failed attempt, try again...");
-        DSP.PlayVideoByIndex(2, 3);
+        DSP.PlayNextVideo(2);
     }
 
     void OnFirstHit()
     {
         Debug.Log("Successful hit 1/3 - moving on...");
-        DSP.PlayVideoByIndex(3, 4);
+        DSP.PlayNextVideo(3);
     }
 
     void OnSecondHit()
     {
         Debug.Log("successful hit 2/3 - moving on...");
-        DSP.PlayVideoByIndex(4, 5);
+        DSP.PlayNextVideo(4);
     }
 
     void OnThirdHit()
     {
         Debug.Log("successful hit 3/3 - task complete!");
-        DSP.PlayVideoByIndex(5, 6);
+        DSP.PlayNextVideo(5);
     }
 }

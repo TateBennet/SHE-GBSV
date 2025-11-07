@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Video;
 
 [System.Serializable]
 public class DuoVideoAudioGroup
 {
-    [Tooltip("Name of the video this set belongs to (match loosely to the video file name).")]
+    [Tooltip("Match to the current video name (loose match is okay).")]
     public string videoName;
-    [Tooltip("Audio sources to play when this video plays.")]
+    [Tooltip("Spatialized audio sources to play with this video.")]
     public List<AudioSource> audioSources = new List<AudioSource>();
 }
 
@@ -20,15 +19,13 @@ public class DuoAudioManager : MonoBehaviour
     [Header("Audio Groups")]
     public List<DuoVideoAudioGroup> duoVideoAudioGroups = new List<DuoVideoAudioGroup>();
 
-    [Header("Sync Settings")]
-    [Tooltip("Maximum allowed drift before correcting (seconds).")]
-    public float syncTolerance = 0.03f;
+    [Header("Sync Start")]
+    [Tooltip("Lead-in buffer before starting (DSP seconds). 0.10–0.20 is typical.")]
+    public double startLeadSeconds = 0.12;
 
     private List<AudioSource> activeSources = new List<AudioSource>();
     private VideoPlayer currentPlayer;
     private DuoVideoAudioGroup _pendingGroup;
-
-    private bool syncingActive = false;
 
     void Start()
     {
@@ -38,122 +35,63 @@ public class DuoAudioManager : MonoBehaviour
             return;
         }
 
+        // Wire to the new event: video fully prepared & paused on frame 0
         videoStreamManager.OnVideoChanged += HandleVideoChanged;
-        videoStreamManager.OnVideoPaused += PauseAll;
+        videoStreamManager.OnVideoPreparedAndPaused += HandlePreparedAndPaused;
 
         currentPlayer = videoStreamManager.GetActivePlayer();
-        if (currentPlayer) HandleVideoChanged();
     }
 
     private void OnDestroy()
     {
         if (!videoStreamManager) return;
-
         videoStreamManager.OnVideoChanged -= HandleVideoChanged;
-        videoStreamManager.OnVideoPaused -= PauseAll;
+        videoStreamManager.OnVideoPreparedAndPaused -= HandlePreparedAndPaused;
     }
 
     private void HandleVideoChanged()
     {
         currentPlayer = videoStreamManager.GetActivePlayer();
 
-        foreach (var src in activeSources)
-            if (src) src.Stop();
+        // Stop old audio
+        foreach (var s in activeSources)
+            if (s) s.Stop();
         activeSources.Clear();
 
-        string name = Normalize(videoStreamManager.GetCurrentVideoName());
-        if (string.IsNullOrEmpty(name)) return;
-
-        var group = duoVideoAudioGroups.Find(g => Normalize(g.videoName) == name);
-        if (group == null)
-        {
-            Debug.Log($"DuoAudioManager: No audio group found for video '{name}'");
-            return;
-        }
-
-        _pendingGroup = group;
-        StartAudioThenVideo();
+        // Resolve group by current video name
+        string key = Normalize(videoStreamManager.GetCurrentVideoName());
+        _pendingGroup = duoVideoAudioGroups.Find(g => Normalize(g.videoName) == key);
     }
 
-    private void StartAudioThenVideo()
+    private void HandlePreparedAndPaused()
     {
-        if (_pendingGroup == null || currentPlayer == null)
+        if (currentPlayer == null || _pendingGroup == null)
         {
-            Debug.LogWarning("No pending audio group or player when trying to start playback.");
+            Debug.Log("DuoAudioManager: No player or group when prepared event fired.");
             return;
         }
 
-        // 🔊 1. Schedule audio precisely on DSP clock
+        // Arm audio, do not play yet
+        foreach (var s in _pendingGroup.audioSources)
+        {
+            if (!s) continue;
+            s.Stop();
+            s.time = 0f;
+            activeSources.Add(s);
+        }
+
+        // Compute joint start time on DSP clock
         double dspNow = AudioSettings.dspTime;
-        double scheduledStart = dspNow + 0.1; // small buffer
 
-        foreach (var src in _pendingGroup.audioSources)
-        {
-            if (!src) continue;
-            src.Stop();
-            src.time = 0f;
-            src.PlayScheduled(scheduledStart);
-            activeSources.Add(src);
-        }
+        // Start audio a little later so the video has a small head start
+        double videoStart = dspNow + 0.05;   // video begins decoding now
+        double audioStart = dspNow + 0.08;   // audio starts 0.2s later
 
-        // 🎥 2. Start video immediately (it will catch up)
-        currentPlayer.Play();
+        // Schedule both
+        videoStreamManager.BeginActiveAtDSP(videoStart);
+        foreach (var s in activeSources)
+            s.PlayScheduled(audioStart);
 
-        // 3. Begin sync loop
-        syncingActive = true;
-        Debug.Log($"🎬 Audio scheduled at {scheduledStart:F3}s DSP; Sync enabled.");
-    }
-
-    private void PauseAll()
-    {
-        foreach (var src in activeSources)
-            if (src && src.isPlaying)
-                src.Pause();
-    }
-
-    private void ResumeAll()
-    {
-        foreach (var src in activeSources)
-            if (src && !src.isPlaying)
-                src.UnPause();
-    }
-
-    private void RestartAll()
-    {
-        foreach (var src in activeSources)
-        {
-            if (!src) continue;
-            src.Stop();
-            src.time = 0f;
-            src.Play();
-        }
-        syncingActive = true;
-    }
-
-    void Update()
-    {
-        if (!syncingActive || currentPlayer == null || activeSources.Count == 0) return;
-
-        // just use the first audio source as master
-        var src = activeSources[0];
-        if (!src || !src.isPlaying) return;
-
-        double videoTime = currentPlayer.time;
-        double audioTime = src.time;   // this exists per AudioSource
-
-        float drift = (float)(videoTime - audioTime);
-
-        if (Mathf.Abs(drift) > syncTolerance)
-        {
-            currentPlayer.time = Mathf.Clamp((float)audioTime, 0f, (float)currentPlayer.length);
-            currentPlayer.Play();
-            Debug.Log($"🔧 Corrected drift: {drift:F3}s");
-        }
-        else
-        {
-            syncingActive = false;
-            Debug.Log($"✅ Locked sync (drift {drift:F3}s)");
-        }
     }
 
     private string Normalize(string s)

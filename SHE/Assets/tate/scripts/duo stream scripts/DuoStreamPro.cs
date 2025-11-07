@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.XR;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 using UnityEngine.Android;
@@ -21,345 +20,305 @@ public class DuoStreamPro : MonoBehaviour
     [Header("Video Files (assign manually in Inspector)")]
     public List<string> videoFiles = new List<string>();
 
-    [Header("Playback Info (read-only)")]
-    [SerializeField] private int currentVideoIndex = -1;
-    [SerializeField] private string currentVideoName = "";
-
     [Header("Targets (360 sphere renderers)")]
     public Renderer sphereA;
     public Renderer sphereB;
 
-    // which player is currently active
-    private bool usingA = true;
+    [Header("State (read-only)")]
+    [SerializeField] private int currentVideoIndex = -1;
+    [SerializeField] private string currentVideoName = "";
 
-    // track which index is actually prepared on each player
-    private int preparedIndexA = -1;
-    private int preparedIndexB = -1;
+    // Which set is active
+    public bool usingA = true;
 
-    public event Action OnVideoChanged;
+    // Events
+    /// <summary> Fired when the active player has prepared and is paused on frame 0 (ready to start). </summary>
+    public event Action OnVideoPreparedAndPaused;
+    /// <summary> Fired when the active player actually begins playback. </summary>
+    public event Action OnVideoStarted;
     public event Action OnVideoPaused;
+    public event Action OnVideoResumed;
+    public event Action OnVideoRestarted;
+    public event Action OnVideoSeeked;
+    public event Action OnVideoChanged;
 
-
-
-    // convenience
-    private VideoPlayer ActivePlayer => usingA ? playerA : playerB;
-    private VideoPlayer StandbyPlayer => usingA ? playerB : playerA;
-    private Renderer ActiveSphere => usingA ? sphereA : sphereB;
-    private Renderer StandbySphere => usingA ? sphereB : sphereA;
-
-    public VideoPlayer GetActivePlayer() => ActivePlayer;
-    public VideoPlayer GetStandbyPlayer() => StandbyPlayer;
-    public Renderer GetActiveSphere() => ActiveSphere;
-    public Renderer GetStandbySphere() => StandbySphere;
+    // Convenience
+    public VideoPlayer GetActivePlayer() => usingA ? playerA : playerB;
+    public VideoPlayer GetStandbyPlayer() => usingA ? playerB : playerA;
+    public Renderer GetActiveSphere() => usingA ? sphereA : sphereB;
+    public Renderer GetStandbySphere() => usingA ? sphereB : sphereA;
 
     private void Awake()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         EnsureMediaPermission();
 #endif
+        // Reduce initial latency on Android
+        if (playerA) { playerA.waitForFirstFrame = false; playerA.skipOnDrop = true; }
+        if (playerB) { playerB.waitForFirstFrame = false; playerB.skipOnDrop = true; }
     }
 
     private void Start()
     {
-        playerA.playbackSpeed = 1.0f;
-        playerB.playbackSpeed = 1.0f;
-        playerA.skipOnDrop = true;
-        playerB.skipOnDrop = true;
-
         if (videoFiles.Count > 0)
-            StartCoroutine(PrepareAndStartFirstVideo());
+        {
+            // Prepare first video fully and pause on frame 0
+            StartCoroutine(PrepareActivateAndPause(0, /*makeActive*/ true));
+            // Also start preloading the next, if any
+            if (videoFiles.Count > 1)
+                PreloadVideo(1);
+        }
     }
 
     /// <summary>
-    /// Prepares the first video fully before starting playback.
+    /// Prepares the given index on the active path (or swaps to it), binds texture, enables correct sphere,
+    /// pauses on frame 0, and fires OnVideoPreparedAndPaused.
     /// </summary>
-    private IEnumerator PrepareAndStartFirstVideo()
+    private IEnumerator PrepareActivateAndPause(int index, bool makeActive)
     {
-        int firstIndex = 0;
+        if (index < 0 || index >= videoFiles.Count) yield break;
 
-        Debug.Log("🎥 Preparing first video: " + videoFiles[firstIndex]);
-
-        var firstPlayer = playerA;
-        var firstSphere = sphereA;
-
-        firstPlayer.url = videoFiles[firstIndex];
-        firstPlayer.Prepare();
-
-        float timeout = 30f;
-        float timer = 0f;
-        while (!firstPlayer.isPrepared && timer < timeout)
+        // Decide which player is becoming active for this index
+        if (makeActive)
         {
-            timer += Time.unscaledDeltaTime;
-            yield return null;
+            // If the currently "active" slot isn't the one we want, we still load into ActivePlayer
+            // by ensuring usingA flag lines up with which sphere we want to show.
+            // We'll load URL into ActivePlayer (as returned below).
         }
 
-        if (!firstPlayer.isPrepared)
+        var activePlayer = GetActivePlayer();
+        var activeSphere = GetActiveSphere();
+
+        // Load URL into the active player
+        activePlayer.Stop();
+        activePlayer.url = videoFiles[index];
+        activePlayer.Prepare();
+
+        // Wait until prepared
+        const float timeout = 45f;
+        float t = 0f;
+        // Wait until prepared
+        // Wait until prepared
+        while (!activePlayer.isPrepared && t < timeout)
         {
-            Debug.LogWarning("❌ First video failed to prepare: " + videoFiles[firstIndex]);
+            t += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        if (!activePlayer.isPrepared)
+        {
+            Debug.LogWarning($"PrepareActivateAndPause: timed out preparing {videoFiles[index]}");
             yield break;
         }
 
-        Debug.Log("✅ First video prepared. Starting playback...");
+        // Bind texture and show correct sphere
+        TryBindTextureTo(activePlayer, activeSphere);
+        activeSphere.enabled = true;
+        GetStandbySphere().enabled = false;
 
-        // Bind texture to sphere
-        TryBindTextureTo(firstPlayer, firstSphere);
-        firstSphere.enabled = true;
-        sphereB.enabled = false;
+        // 🧠 Give the decoder time to fill its internal buffer
+        yield return new WaitForSecondsRealtime(0.25f);
 
-        usingA = true;
-        currentVideoIndex = firstIndex;
-        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[firstIndex]);
+        // Pause and force frame 0 to be ready and visible
+        activePlayer.Pause();
+        activePlayer.frame = 0;
 
-        firstPlayer.Play();
+        // Allow the renderer one more frame to update
+        yield return null;
+
+        // Notify that we're fully prepared and paused
+        usingA = (activePlayer == playerA);
+        currentVideoIndex = index;
+        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
+        OnVideoChanged?.Invoke();
+        OnVideoPreparedAndPaused?.Invoke();
+
+
+
+        usingA = (activePlayer == playerA);
+        currentVideoIndex = index;
+        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
+
+        // Notify systems that we are fully prepared and paused on frame 0
         OnVideoChanged?.Invoke();
 
-        // Preload the next one
-        PrepareNextVideo(1);
+        // 🔁 Start preloading the next video while this one is paused/ready
+        int nextIndex = (index + 1) % videoFiles.Count;
+        if (videoFiles.Count > 1)
+            StartCoroutine(PreloadOnStandby(nextIndex));
+
+
+        OnVideoPreparedAndPaused?.Invoke();
+
     }
 
-    /// <summary>
-    /// Public way to ask for a clip by index. This now attempts an instant swap
-    /// if the standby player already has that clip prepared.
-    /// </summary>
-    public void PlayVideoByIndex(int index, int? nextIndexOverride = null)
-    {
-        if (index < 0 || index >= videoFiles.Count)
-        {
-            Debug.LogWarning("Invalid video index.");
-            return;
-        }
+    private int? standbyPreparingIndex = null;
+    private Coroutine preloadRoutine;
 
-        // FAST PATH: is the standby already prepared with this clip?
-        if (IsStandbyPreparedFor(index))
-        {
-            InstantSwapToStandby(index, nextIndexOverride);
-            return;
-        }
-
-        // otherwise do the normal prepare+play path
-        StartCoroutine(PrepareAndPlay(index, nextIndexOverride));
-    }
-
-    /// <summary>
-    /// Explicit public preload – useful for interaction scripts
-    /// that know they'll want a specific clip in a couple seconds.
-    /// </summary>
     public void PreloadVideo(int index)
     {
-        if (index < 0 || index >= videoFiles.Count) return;
-
-        // already current
-        if (index == currentVideoIndex) return;
-
-        // already on standby?
-        if (IsStandbyPreparedFor(index)) return;
-
-        // preload it on the standby player
-        StartCoroutine(PreloadOnStandby(index));
-    }
-
-    private IEnumerator PrepareAndPlay(int index, int? nextIndexOverride)
-    {
-        currentVideoIndex = index;
-        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
-
-        var active = ActivePlayer;
-        var activeSphere = ActiveSphere;
-
-        active.Stop();
-        active.url = videoFiles[index];
-        active.Prepare();
-
-        float timeout = 12f;
-        float timer = 0f;
-        while (!active.isPrepared && timer < timeout)
+        // If we're already preloading this same video, ignore duplicate call
+        if (standbyPreparingIndex == index)
         {
-            timer += Time.unscaledDeltaTime;
-            yield return null;
+            Debug.Log($"PreloadVideo: Already preloading index {index}, skipping duplicate.");
+            return;
         }
 
-        if (!active.isPrepared)
-        {
-            Debug.LogWarning("Video prepare timed out: " + videoFiles[index]);
-            yield break;
-        }
+        // Stop any previous preload routine (different index)
+        if (preloadRoutine != null)
+            StopCoroutine(preloadRoutine);
 
-        // mark prepared index for the active player
-        SetPreparedIndexFor(active, index);
-
-        // Bind texture
-        TryBindTextureTo(active, activeSphere);
-
-        // show active sphere, hide the other
-        activeSphere.enabled = true;
-        StandbySphere.enabled = false;
-
-        active.Play();
-        OnVideoChanged?.Invoke();
-
-        // Preload whatever should be next
-        PrepareNextVideo(nextIndexOverride);
+        standbyPreparingIndex = index;
+        preloadRoutine = StartCoroutine(PreloadOnStandby(index));
     }
 
-    /// <summary>
-    /// Called whenever we successfully swap to the standby that already had the clip.
-    /// </summary>
-    private void InstantSwapToStandby(int index, int? nextIndexOverride)
-    {
-        // hide current sphere
-        ActiveSphere.enabled = false;
-        // show standby sphere
-        StandbySphere.enabled = true;
-
-        // flip active flag
-        usingA = !usingA;
-
-        // actually play
-        ActivePlayer.Play();
-
-        currentVideoIndex = index;
-        currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[index]);
-        OnVideoChanged?.Invoke();
-
-        // active player is definitely prepared for this index
-        SetPreparedIndexFor(ActivePlayer, index);
-
-        // load next
-        PrepareNextVideo(nextIndexOverride);
-    }
-
-    private void PrepareNextVideo(int? nextIndexOverride = null)
-    {
-        if (videoFiles.Count <= 1) return;
-
-        int nextIndex = nextIndexOverride.HasValue
-            ? nextIndexOverride.Value
-            : (currentVideoIndex + 1) % videoFiles.Count;
-
-        // don't double-preload if it's already on standby
-        if (IsStandbyPreparedFor(nextIndex)) return;
-
-        StartCoroutine(PreloadOnStandby(nextIndex));
-    }
 
     private IEnumerator PreloadOnStandby(int index)
     {
-        var standby = StandbyPlayer;
-        var standbySphere = StandbySphere;
+        var standby = GetStandbyPlayer();
+        var standbySphere = GetStandbySphere();
 
         standby.Stop();
         standby.url = videoFiles[index];
         standby.Prepare();
 
-        float timeout = 12f;
-        float timer = 0f;
-        while (!standby.isPrepared && timer < timeout)
+        float timeout = 20f;
+        float t = 0f;
+        while (!standby.isPrepared && t < timeout)
         {
-            timer += Time.unscaledDeltaTime;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
-
         if (!standby.isPrepared)
         {
-            Debug.LogWarning("Next video failed to prepare: " + videoFiles[index]);
+            Debug.LogWarning($"PreloadOnStandby: timed out preparing {videoFiles[index]}");
             yield break;
         }
 
-        // mark which index is on this standby
-        SetPreparedIndexFor(standby, index);
-
-        // we don't show this sphere yet, but we *do* bind so texture is ready
+        // Bind the texture so a swap is instant
         TryBindTextureTo(standby, standbySphere);
+        // Don't play yet — standby remains hidden and paused (frame 0 by default after Prepare+Pause if you want)
+        standby.Pause();
+        standby.frame = 0;
+        yield return null;
+
+        standbyPreparingIndex = null;
     }
 
     /// <summary>
-    /// Original "next" behaviour – still works and benefits from the tracking.
+    /// Swap to the standby (already prepared), update indices, and fire "prepared & paused" — no playback yet.
+    /// External systems should then schedule a DSP start for both audio and video at the same time.
     /// </summary>
-    public void PlayNextVideo()
+    public void ActivatePreloadedAsActive(int indexJustLoaded)
     {
-        if (videoFiles.Count == 0) return;
+        // Visually swap spheres
+        GetActiveSphere().enabled = false;
+        GetStandbySphere().enabled = true;
 
-        var standby = StandbyPlayer;
-        var standbySphere = StandbySphere;
-
-        if (!standby.isPrepared || standby.texture == null)
-        {
-            Debug.Log("Standby video not ready yet, falling back to direct load.");
-            PlayVideoByIndex((currentVideoIndex + 1) % videoFiles.Count);
-            return;
-        }
-
-        // swap visible spheres
-        ActiveSphere.enabled = false;
-        standbySphere.enabled = true;
-
-        // swap active
+        // Flip active flag
         usingA = !usingA;
 
-        standby.Play();
-        currentVideoIndex = (currentVideoIndex + 1) % videoFiles.Count;
+        // Update current video info
+        currentVideoIndex = indexJustLoaded;
         currentVideoName = Path.GetFileNameWithoutExtension(videoFiles[currentVideoIndex]);
+
+        // Fire events: we've "changed" the active clip and it's paused on frame 0
         OnVideoChanged?.Invoke();
-
-        // mark active as prepared for current
-        SetPreparedIndexFor(ActivePlayer, currentVideoIndex);
-
-        PrepareNextVideo();
+        OnVideoPreparedAndPaused?.Invoke();
     }
 
-    public void PlayPreviousVideo()
+    /// <summary>
+    /// Play the current active (already prepared & paused) video at an exact DSP time.
+    /// </summary>
+    public void BeginActiveAtDSP(double scheduledDspTime)
     {
-        if (videoFiles.Count == 0) return;
+        StartCoroutine(BeginActiveAtDSP_Co(scheduledDspTime));
+    }
 
-        int prev = (currentVideoIndex - 1 + videoFiles.Count) % videoFiles.Count;
-        PlayVideoByIndex(prev);
+    private IEnumerator BeginActiveAtDSP_Co(double scheduledDspTime)
+    {
+        double wait = scheduledDspTime - AudioSettings.dspTime;
+        if (wait > 0)
+            yield return new WaitForSecondsRealtime((float)wait);
+
+        var vp = GetActivePlayer();
+        vp.Play();
+        OnVideoStarted?.Invoke();
+    }
+
+    /// <summary>
+    /// Helper to prepare and pause a specific index as active (no playback),
+    /// and optionally preload the next one by index.
+    /// </summary>
+    public void PlayVideoByIndex(int index, int? nextIndexOverride = null)
+    {
+        StartCoroutine(PlayVideoByIndex_Co(index, nextIndexOverride));
+    }
+
+    private IEnumerator PlayVideoByIndex_Co(int index, int? nextIndexOverride)
+    {
+        yield return PrepareActivateAndPause(index, true);
+        // After prepared & paused, external system (AudioManager) should schedule a joint start.
+        // Preload next
+        int next = nextIndexOverride ?? ((index + 1) % videoFiles.Count);
+        if (videoFiles.Count > 1)
+            StartCoroutine(PreloadOnStandby(next));
+    }
+
+    public void PlayNextVideo(int nextIndex)
+    {
+        //if (videoFiles.Count == 0) return;
+        //int next = (currentVideoIndex + 1) % videoFiles.Count;
+        //StartCoroutine(PrepareActivateAndPause(next, true));
+        //int preloadNext = (next + 1) % videoFiles.Count;
+        //if (videoFiles.Count > 1)
+        //    StartCoroutine(PreloadOnStandby(preloadNext));
+
+        // No need to prepare from scratch — standby already loaded
+        ActivatePreloadedAsActive(nextIndex);
+
     }
 
     public void PauseVideo()
     {
-        if (ActivePlayer.isPlaying)
-        {
-            ActivePlayer.Pause();
-            OnVideoPaused?.Invoke();
-        }
+        var vp = GetActivePlayer();
+        if (vp.isPlaying) { vp.Pause(); OnVideoPaused?.Invoke(); }
     }
 
-    public void StopVideo() => ActivePlayer.Stop();
+    public void ResumeVideo()
+    {
+        var vp = GetActivePlayer();
+        if (!vp.isPlaying) { vp.Play(); OnVideoResumed?.Invoke(); }
+    }
+
+    public void StopVideo() => GetActivePlayer().Stop();
+
+    public void RestartVideo()
+    {
+        var vp = GetActivePlayer();
+        vp.time = 0;
+        vp.Play();
+        OnVideoRestarted?.Invoke();
+    }
+
+    public void SeekVideo(double newTime)
+    {
+        var vp = GetActivePlayer();
+        vp.time = newTime;
+        vp.Play();
+        OnVideoSeeked?.Invoke();
+    }
 
     public int GetCurrentVideoIndex() => currentVideoIndex;
     public string GetCurrentVideoName() => currentVideoName;
-    public bool IsPlaying() => ActivePlayer.isPlaying;
 
     private void TryBindTextureTo(VideoPlayer vp, Renderer target)
     {
-        if (vp.texture == null || target == null) return;
-
+        if (!vp || !target) return;
+        var tex = vp.texture;
+        if (!tex) return;
         var mat = target.material;
-        if (mat.HasProperty("_BaseMap"))
-            mat.SetTexture("_BaseMap", vp.texture);
-        if (mat.HasProperty("_MainTex"))
-            mat.SetTexture("_MainTex", vp.texture);
-    }
-
-    private bool IsStandbyPreparedFor(int index)
-    {
-        // if active is A, standby is B
-        if (usingA)
-        {
-            return preparedIndexB == index && playerB.isPrepared;
-        }
-        else
-        {
-            return preparedIndexA == index && playerA.isPrepared;
-        }
-    }
-
-    private void SetPreparedIndexFor(VideoPlayer vp, int index)
-    {
-        if (vp == playerA)
-            preparedIndexA = index;
-        else if (vp == playerB)
-            preparedIndexB = index;
+        if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", tex);
+        if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", tex);
     }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
