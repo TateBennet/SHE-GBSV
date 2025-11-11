@@ -224,8 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!65 &143164172
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -554,8 +554,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!1 &581082540
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,8 +623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!1 &615309933
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,8 +692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  player: {fileID: 1312232299}
+  DSP: {fileID: 0}
 --- !u!4 &1869207274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5408919155689928052, guid: 79ab887000c27dd4abc154c0b9f9172f, type: 3}
@@ -2781,8 +2781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!1 &2047043190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,8 +2850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
-  streamVideos: {fileID: 1413691766}
-  pcvideos: {fileID: 1413691764}
+  DSP: {fileID: 0}
+  nextVidNumber: 0
 --- !u!1 &2092139007
 GameObject:
   m_ObjectHideFlags: 0
