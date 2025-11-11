@@ -3,23 +3,31 @@ using UnityEngine.Video;
 
 public class PhoneTapButton : MonoBehaviour
 {
-    public PhoneMaterialSwitch phone; // Drag the phone parent here
-    public VideoPlayer player;
+    public PhoneMaterialSwitch phone;      // your phone parent
+    public DuoStreamPro DSP;      // drag your DuoStreamPro here
     private bool hasBeenTapped = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!hasBeenTapped && other.CompareTag("pointer"))
         {
-            if(!player.isPlaying) player.Play();
-            hasBeenTapped = true;          // prevent multiple triggers
+            // Get whichever player is currently active
+            VideoPlayer activePlayer = DSP.GetActivePlayer();
+
+            // Resume playback if paused
+            if (activePlayer && !activePlayer.isPlaying)
+            {
+                DSP.ResumeVideo();
+            }
+
+            hasBeenTapped = true;
             phone.TapButton();
-            gameObject.SetActive(false);   // disable this button right away
+            gameObject.SetActive(false);
         }
     }
 
     private void OnEnable()
     {
-        hasBeenTapped = false; // reset when re-enabled for the next screen
+        hasBeenTapped = false;
     }
 }

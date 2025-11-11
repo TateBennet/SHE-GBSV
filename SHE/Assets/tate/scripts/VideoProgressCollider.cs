@@ -3,9 +3,9 @@ using UnityEngine;
 public class VideoProgressCollider : MonoBehaviour
 {
     public PhoneMaterialSwitch phone; // Drag the phone parent here
-    public QuestVideoPlaylist streamVideos;
-    public StreamVideos pcvideos;
+    public DuoStreamPro DSP;
     private bool hasBeenTapped = false;
+    public int nextVidNumber;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class VideoProgressCollider : MonoBehaviour
             hasBeenTapped = true;          // prevent multiple triggers
             phone.TapButton();
             gameObject.SetActive(false);   // disable this button right away
-            streamVideos.StartCoroutine("PlayNext");
+            DSP.PlayNextVideo(nextVidNumber);
             //pcvideos.PlayNext();
         }
     }
