@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1296,8 +1296,12 @@ Light:
   m_BoundingSphereOverride: {x: 4.08e-43, y: 1.16e-43, z: 0, w: 497.04468}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &2097769182
 Transform:
   m_ObjectHideFlags: 0
@@ -161723,6 +161727,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 379905164, guid: 5e50eba45ef63694ab6dad66efcbb007, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1946309856272427401, guid: 5e50eba45ef63694ab6dad66efcbb007, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 7531023388682785573, guid: 5e50eba45ef63694ab6dad66efcbb007, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -162285,6 +162292,10 @@ PrefabInstance:
       propertyPath: poseData.Array.data[1].poseRelativeMatrix.Array.data[3].e23
       value: 0.00030009382
       objectReference: {fileID: 0}
+    - target: {fileID: 1538437065218482124, guid: 3e84382cc3999304a81e990594338239, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 1906938092331753465, guid: 3e84382cc3999304a81e990594338239, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.033
@@ -162701,6 +162712,10 @@ PrefabInstance:
       propertyPath: poseData.Array.data[1].poseRelativeMatrix.Array.data[3].e23
       value: 0.00010000817
       objectReference: {fileID: 0}
+    - target: {fileID: 2419507035407656886, guid: 3e84382cc3999304a81e990594338239, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 2499733034095817542, guid: 3e84382cc3999304a81e990594338239, type: 3}
       propertyPath: poseData.Array.data[0].localRotations.Array.data[0].w
       value: 0.010575112
@@ -163965,6 +163980,10 @@ PrefabInstance:
       propertyPath: poseData.Array.data[1].poseRelativeMatrix.Array.data[3].e23
       value: 0.0013003431
       objectReference: {fileID: 0}
+    - target: {fileID: 2731389397833828364, guid: 3e84382cc3999304a81e990594338239, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4698106323488377957, guid: 3e84382cc3999304a81e990594338239, type: 3}
       propertyPath: poseData.Array.data[0].localRotations.Array.data[0].w
       value: 0.103199296
@@ -164425,6 +164444,10 @@ PrefabInstance:
       propertyPath: poseData.Array.data[1].poseRelativeMatrix.Array.data[3].e23
       value: 0.00010012241
       objectReference: {fileID: 0}
+    - target: {fileID: 5660233017697184961, guid: 3e84382cc3999304a81e990594338239, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6429312244219928007, guid: 3e84382cc3999304a81e990594338239, type: 3}
       propertyPath: poseData.Array.data[0].localRotations.Array.data[0].w
       value: -0.017903462
@@ -164873,6 +164896,10 @@ PrefabInstance:
       propertyPath: poseData.Array.data[1].poseRelativeMatrix.Array.data[3].e23
       value: 0.0003003294
       objectReference: {fileID: 0}
+    - target: {fileID: 7262363007382066277, guid: 3e84382cc3999304a81e990594338239, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 8923275838841625975, guid: 3e84382cc3999304a81e990594338239, type: 3}
       propertyPath: poseData.Array.data[0].localRotations.Array.data[0].w
       value: -0.016535727
