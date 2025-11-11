@@ -1200,8 +1200,8 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691764}
-            m_TargetAssemblyTypeName: StreamVideos, Assembly-CSharp
+          - m_Target: {fileID: 1413691766}
+            m_TargetAssemblyTypeName: QuestVideoPlaylist, Assembly-CSharp
             m_MethodName: PauseVideo
             m_Mode: 1
             m_Arguments:
