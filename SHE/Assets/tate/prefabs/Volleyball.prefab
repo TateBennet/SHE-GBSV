@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Volleyball
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe58617fba6d8c846950d4a1afb45df1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -374,3 +378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: 51564599a61707248ac86bb673283306, type: 3}
   audioSource: {fileID: 8200186331586376344}
+  cooldown: 0.2
+  functionDelay: 2
+  bounceCount: 0

@@ -38,6 +38,8 @@ public class DuoAudioManager : MonoBehaviour
         // Wire to the new event: video fully prepared & paused on frame 0
         videoStreamManager.OnVideoChanged += HandleVideoChanged;
         videoStreamManager.OnVideoPreparedAndPaused += HandlePreparedAndPaused;
+        videoStreamManager.OnVideoPaused += HandleVideoPaused;
+        videoStreamManager.OnVideoResumed += HandleVideoResumed;
 
         currentPlayer = videoStreamManager.GetActivePlayer();
     }
@@ -47,6 +49,8 @@ public class DuoAudioManager : MonoBehaviour
         if (!videoStreamManager) return;
         videoStreamManager.OnVideoChanged -= HandleVideoChanged;
         videoStreamManager.OnVideoPreparedAndPaused -= HandlePreparedAndPaused;
+        videoStreamManager.OnVideoPaused -= HandleVideoPaused;
+        videoStreamManager.OnVideoResumed -= HandleVideoResumed;
     }
 
     private void HandleVideoChanged()
@@ -92,6 +96,24 @@ public class DuoAudioManager : MonoBehaviour
         foreach (var s in activeSources)
             s.PlayScheduled(audioStart);
 
+    }
+
+    private void HandleVideoPaused()
+    {
+        foreach (var s in activeSources)
+        {
+            if (s && s.isPlaying)
+                s.Pause();
+        }
+    }
+
+    private void HandleVideoResumed()
+    {
+        foreach (var s in activeSources)
+        {
+            if (s && !s.isPlaying)
+                s.UnPause();
+        }
     }
 
     private string Normalize(string s)
