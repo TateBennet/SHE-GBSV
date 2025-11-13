@@ -2357,7 +2357,7 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: SocialMediaS3.mp4
     cues:
-    - timeSeconds: 3
+    - timeSeconds: 1
       onCue:
         m_PersistentCalls:
           m_Calls:
