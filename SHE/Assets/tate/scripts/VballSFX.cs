@@ -62,6 +62,7 @@ public class VballSFX : MonoBehaviour
     {
         iterations = 0;
         counter = 0;
+        failed = false;
         Debug.Log("vball counter was reset!" + " counter is: " + counter + " iterations is: " + iterations);
     }
 

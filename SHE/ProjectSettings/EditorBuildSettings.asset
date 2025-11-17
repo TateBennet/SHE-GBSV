@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/tate/VolleyBall Duo Build.unity
-    guid: 8ec360de883616d40b9638f6f327b95e
+    path: Assets/tate/IntroFinal.unity
+    guid: 0167b035195fd48439aaf60ce58b3f01
+  - enabled: 1
+    path: Assets/tate/VBFinal.unity
+    guid: fa88baa8d86ef2e4387b92f6706853e1
+  - enabled: 1
+    path: Assets/tate/SMFinal.unity
+    guid: 6ed1e4258abad0d469e731bcf84d1e8d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

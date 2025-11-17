@@ -10,6 +10,7 @@ TagManager:
   - phoneButton
   - Hand
   - Floor
+  - Ball
   layers:
   - Default
   - TransparentFX

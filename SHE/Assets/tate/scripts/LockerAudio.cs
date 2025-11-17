@@ -23,6 +23,8 @@ public class LockerAudio : MonoBehaviour
     private bool audioStarted = false;
     private bool wasPlaying = false;
 
+    public GameObject keepObj;
+
     public void Play()
     {
         hasTriggeredNext = false;
@@ -73,8 +75,14 @@ public class LockerAudio : MonoBehaviour
             Invoke(nameof(DisableObjects), disableDelay);
     }
 
+    public void Unparent()
+    {
+        keepObj.transform.SetParent(null, true); // Keep world position
+    }
+
     private void DisableObjects()
     {
+        
         foreach (GameObject obj in objectsToDisable)
             if (obj != null)
                 obj.SetActive(false);

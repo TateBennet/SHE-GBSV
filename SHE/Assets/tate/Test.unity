@@ -1553,9 +1553,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1018331383955490879, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5224911879402520128, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
       propertyPath: m_Name
       value: AutoHand She
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831264111131302085, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7197010411306514412, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1595,6 +1603,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7197010411306514412, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024006410750982379, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
+      propertyPath: useMovement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024006410750982379, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
+      propertyPath: allowClimbing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024006410750982379, guid: 1d1c172085dfe484bb1a945cf774df28, type: 3}
+      propertyPath: allowBodyPushing
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

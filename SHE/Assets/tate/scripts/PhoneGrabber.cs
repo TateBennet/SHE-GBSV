@@ -14,8 +14,6 @@ public class PhoneGrabber : MonoBehaviour
     public Vector3 localPositionOffset;
     public Vector3 localRotationOffset;
 
-    private bool grabbed = false;
-
     private void Start()
     {
         if (phone) phone.SetActive(false); // start hidden
@@ -36,28 +34,4 @@ public class PhoneGrabber : MonoBehaviour
             transform.localRotation = Quaternion.Euler(localRotationOffset);
         }
     }
-
-    //    void OnTriggerEnter(Collider other)
-    //{
-    //    if (grabbed) return;
-
-    //    // Make sure it's the hand collider
-    //    if (other.CompareTag("PlayerHand")) // add this tag to your hand colliders
-    //    {
-    //        Debug.Log("Phone grabbed by: " + other.name);
-
-    //        // Hide the hand visual
-    //        if (handVisual) handVisual.SetActive(false);
-
-    //        // Parent phone to palm
-    //        if (handPalm)
-    //        {
-    //            transform.SetParent(handPalm);
-    //            transform.localPosition = localPositionOffset;
-    //            transform.localRotation = Quaternion.Euler(localRotationOffset);
-    //        }
-
-    //        grabbed = true;
-    //    }
-    //}
 }

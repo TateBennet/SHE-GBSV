@@ -1,15 +1,21 @@
 using UnityEngine;
 
+[System.Serializable]
+public class AnimationEntry
+{
+    public Animator animator;       // The animator to use
+    public string animationName;    // The animation to play on that animator
+}
+
 public class Chooselocker1 : MonoBehaviour
 {
     [Header("Objects to Disable")]
     public GameObject[] objectsToDisable;
 
-    [Header("Animation Settings")]
-    public Animator animator;        // Assign in Inspector
-    public string animationName;     // The name of the animation to play
+    [Header("Animations To Play")]
+    public AnimationEntry[] animations;   // <-- multiple animators + animations
 
-    // Disable all the target GameObjects
+    // Disable all target objects
     public void DisableObjects()
     {
         foreach (GameObject obj in objectsToDisable)
@@ -19,16 +25,21 @@ public class Chooselocker1 : MonoBehaviour
         }
     }
 
-    // Play a specific animation on the assigned Animator
-    public void PlayAnimation()
+    // Play all animations
+    public void PlayAnimations()
     {
-        if (animator != null && !string.IsNullOrEmpty(animationName))
+        if (animations == null || animations.Length == 0)
         {
-            animator.Play(animationName);
+            Debug.LogWarning("No animations assigned!");
+            return;
         }
-        else
+
+        foreach (AnimationEntry entry in animations)
         {
-            Debug.LogWarning("Animator or animation name not set!");
+            if (entry.animator != null && !string.IsNullOrEmpty(entry.animationName))
+            {
+                entry.animator.Play(entry.animationName);
+            }
         }
     }
 }
