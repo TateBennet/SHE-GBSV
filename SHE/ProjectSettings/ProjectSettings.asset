@@ -164,7 +164,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.KnowImmersiveTech.She.SocialDUO
+    Android: com.KnowImmersiveTech.She.Final
     Standalone: com.Unity-Technologies.VR-Template
   buildNumber:
     Standalone: 0
