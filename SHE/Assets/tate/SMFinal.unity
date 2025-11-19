@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenTextures:
-  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
+  - {fileID: 2800000, guid: f825484aa7039a548a20040c1a486924, type: 3}
   - {fileID: 8400000, guid: 5530a47db12b39740abf55326b41563a, type: 2}
   - {fileID: 2800000, guid: b8f0aa1dd8642f74d90bac20ede0dbb2, type: 3}
   - {fileID: 2800000, guid: 0133a9ce40c23a3408dc58d7102e8853, type: 3}
@@ -931,6 +931,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: da5e3adaa24aa0549a15872b6d0c46a5, type: 3}
   - {fileID: 2800000, guid: b78441e8da7cecb4abf045436d5ee7c9, type: 3}
+  - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   - {fileID: 2800000, guid: d94155e2d0aabaa44986e17e11076276, type: 3}
   screenButtons:
   - {fileID: 0}
@@ -2127,7 +2128,7 @@ MonoBehaviour:
   videoManager: {fileID: 1413691766}
   perVideoCues:
   - clip: {fileID: 0}
-    urlContains: SocialMediaS1.mp4
+    urlContains: SocialMediaS1N.mp4
     cues:
     - timeSeconds: 3
       onCue:
@@ -2199,12 +2200,6 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
-      repeat: 0
-      repeatInterval: 0
-    - timeSeconds: 23
-      onCue:
-        m_PersistentCalls:
-          m_Calls:
           - m_Target: {fileID: 1413691766}
             m_TargetAssemblyTypeName: DuoStreamPro, Assembly-CSharp
             m_MethodName: PauseVideo
@@ -2220,7 +2215,7 @@ MonoBehaviour:
       repeat: 0
       repeatInterval: 0
   - clip: {fileID: 0}
-    urlContains: SocialMediaS2.mp4
+    urlContains: SocialMediaS2N.mp4
     cues:
     - timeSeconds: 3
       onCue:
@@ -3287,10 +3282,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoStreamManager: {fileID: 1413691766}
   duoVideoAudioGroups:
-  - videoName: SocialMediaS1
+  - videoName: SocialMediaS1N
     audioSources:
     - {fileID: 1365963903}
-  - videoName: SocialMediaS2
+  - videoName: SocialMediaS2N
     audioSources:
     - {fileID: 1536171721}
   - videoName: SocialMediaS3
@@ -3654,8 +3649,8 @@ MonoBehaviour:
   playerA: {fileID: 165100590}
   playerB: {fileID: 701816688}
   videoFiles:
-  - file:///sdcard/Download/SocialMediaS1.mp4
-  - file:///sdcard/Download/SocialMediaS2.mp4
+  - file:///sdcard/Download/SocialMediaS1N.mp4
+  - file:///sdcard/Download/SocialMediaS2N.mp4
   - file:///sdcard/Download/SocialMediaS3.mp4
   - file:///sdcard/Download/SocialMediaS4A.mp4
   - file:///sdcard/Download/SocialMediaS4B.mp4
