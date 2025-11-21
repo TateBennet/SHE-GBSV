@@ -4,6 +4,7 @@ using UnityEngine;
 public class PhoneScreenSwitchIntro : MonoBehaviour
 {
     [Header("Screen Settings")]
+
     public Texture[] screenTextures; // One per screen 
     public GameObject[] screenButtons; // Matching colliders for each screen 
     public Renderer phoneRenderer; // Your phone’s Mesh Renderer 

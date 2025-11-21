@@ -34,6 +34,7 @@ public class VballSFX : MonoBehaviour
         if (collision.collider.CompareTag("Floor"))
         {
             bounceCount++;
+            audioSource.PlayOneShot(hitSound);
             Debug.Log("volleyball hit the floor");
             if(bounceCount >= 2)
             {

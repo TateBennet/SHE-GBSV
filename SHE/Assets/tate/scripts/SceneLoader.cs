@@ -3,10 +3,31 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
+    public static bool finishedA = false;
+    public static bool finishedB = false;
+
     // Call this from your button, pass the scene name you want to load.
-    public void LoadScene(string sceneName)
+    public void LoadScene()
     {
-        SceneManager.LoadScene(sceneName);
+        if(finishedA && finishedB)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+        else if (!finishedA || !finishedB)
+        {
+            SceneManager.LoadScene("IntroFinal");
+        }
+    }
+
+    public void FinishedSocialMedia()
+    {
+        finishedA = true;
+    }
+
+    public void FinishedVolleyBall() 
+    {  
+        finishedB = true; 
     }
 
     // Or, if you want a button that always loads a specific scene:

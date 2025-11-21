@@ -5,6 +5,7 @@ public class FloorReset : MonoBehaviour
 {
     public Transform ballRespawnPoint;   // Assign in Inspector
     public float resetDelay = 0.5f;
+    public VballSFX bounceSound;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -16,6 +17,7 @@ public class FloorReset : MonoBehaviour
 
     private void ResetBall(GameObject ball)
     {
+        bounceSound.audioSource.PlayOneShot(bounceSound.hitSound);
         StartCoroutine(Respawn(ball));
     }
 

@@ -4,6 +4,7 @@ using UnityEngine.Video;
 public class PhoneTapButton : MonoBehaviour
 {
     public PhoneMaterialSwitch phone;      // your phone parent
+    public PlayTextSFX confirmTap;
     public DuoStreamPro DSP;      // drag your DuoStreamPro here
     private bool hasBeenTapped = false;
 
@@ -21,6 +22,7 @@ public class PhoneTapButton : MonoBehaviour
             }
 
             hasBeenTapped = true;
+            confirmTap.PlaySFX();
             phone.TapButton();
             gameObject.SetActive(false);
         }

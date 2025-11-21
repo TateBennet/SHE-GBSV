@@ -161,8 +161,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 271d4d95e8da91e45b98986bb4252dca, type: 3}
-  m_Resource: {fileID: 8300000, guid: 271d4d95e8da91e45b98986bb4252dca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a0bcb3b4ae1240e4dbff1b341403af9f, type: 3}
+  m_Resource: {fileID: 8300000, guid: a0bcb3b4ae1240e4dbff1b341403af9f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 6
 --- !u!65 &143164172
@@ -954,6 +955,117 @@ MonoBehaviour:
   phoneRenderer: {fileID: 445111311}
   screenMaterialIndex: 1
   fadeDuration: 0.1
+--- !u!82 &445111317
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445111308}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0
+  MaxDistance: 1
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &445111318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445111308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c5af4a37273134c9660e801026da07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 445111317}
+  sfx: {fileID: 8300000, guid: a21593b06a00e6842a00eb66919d3694, type: 3}
 --- !u!1 &451093080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 3
 --- !u!1 &468298735
@@ -1219,6 +1332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 1
 --- !u!1 &615309933
@@ -1288,6 +1402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 4
 --- !u!1 &672460599
@@ -2974,6 +3089,18 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+          - m_Target: {fileID: 1953182760}
+            m_TargetAssemblyTypeName: NotificationSFX, Assembly-CSharp
+            m_MethodName: PlayNotification
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
       repeat: 0
       repeatInterval: 0
     - timeSeconds: 31
@@ -3019,9 +3146,9 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 445111316}
-            m_TargetAssemblyTypeName: PhoneMaterialSwitch, Assembly-CSharp
-            m_MethodName: TapButton
+          - m_Target: {fileID: 1376870000}
+            m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+            m_MethodName: FinishedSocialMedia
             m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -3052,7 +3179,7 @@ MonoBehaviour:
           - m_Target: {fileID: 1376870000}
             m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
             m_MethodName: LoadScene
-            m_Mode: 5
+            m_Mode: 1
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3556,6 +3683,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 445111316}
+    - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 445111318}
+    - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 445111317}
   m_SourcePrefab: {fileID: 100100000, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
 --- !u!1 &1365963901
 GameObject:
@@ -3599,8 +3732,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 02a6e7337db74324cb330571bf2ecb41, type: 3}
-  m_Resource: {fileID: 8300000, guid: 02a6e7337db74324cb330571bf2ecb41, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1a07cfa51cae96a4cbfeaea4f50eaf7f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 1a07cfa51cae96a4cbfeaea4f50eaf7f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3832,8 +3965,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: afaa0e252b6d04f47856b3041ec382f2, type: 3}
-  m_Resource: {fileID: 8300000, guid: afaa0e252b6d04f47856b3041ec382f2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a14aeeaa6f33ffb4ca26e71ca2c194b3, type: 3}
+  m_Resource: {fileID: 8300000, guid: a14aeeaa6f33ffb4ca26e71ca2c194b3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4381,6 +4514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
 --- !u!1 &1867833960
 GameObject:
@@ -4701,6 +4835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 5
 --- !u!1 &2047043190
@@ -4770,6 +4905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 445111316}
+  confirmTap: {fileID: 445111318}
   DSP: {fileID: 1413691766}
   nextVidNumber: 2
 --- !u!1 &2092276752
