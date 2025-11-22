@@ -1498,7 +1498,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528688882}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2774,15 +2774,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3131596007961234948, guid: 11b64df11bbc303498231ac5619b0cf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -0.443
       objectReference: {fileID: 0}
     - target: {fileID: 3131596007961234948, guid: 11b64df11bbc303498231ac5619b0cf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 0.925
       objectReference: {fileID: 0}
     - target: {fileID: 3131596007961234948, guid: 11b64df11bbc303498231ac5619b0cf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: -0.129
       objectReference: {fileID: 0}
     - target: {fileID: 3131596007961234948, guid: 11b64df11bbc303498231ac5619b0cf6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2983,7 +2983,7 @@ Transform:
   m_GameObject: {fileID: 1249617917}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3297,14 +3297,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPlaneRenderer: {fileID: 1466713650}
   secondPlaneRenderer: {fileID: 1040541832}
-  planeFadeStartTime: 36
+  planeFadeStartTime: 27
   planeFadeDuration: 2
   disableFirstPlaneAfterFade: 1
-  titleText: {fileID: 0}
-  titleAppearTime: 36
+  titleText: {fileID: 1856252005}
+  titleAppearTime: 31
   textObjects:
   - {fileID: 664548734}
-  - {fileID: 1856252005}
   - {fileID: 102857400}
   - {fileID: 473086885}
   - {fileID: 777598755}
@@ -3319,33 +3318,31 @@ MonoBehaviour:
   - {fileID: 168285734}
   - {fileID: 642499979}
   textAppearTimes:
+  - 29
+  - 34
+  - 35
+  - 36
   - 38
-  - 40
-  - 43
-  - 45
-  - 46
-  - 47
+  - 44
+  - 48
+  - 50
+  - 54
+  - 55
   - 57
-  - 61
-  - 62
-  - 66
-  - 68
-  - 70
-  - 73
+  - 63
+  - 65
   - 75
-  - 78
   textVisibleDurations:
   - 5
-  - 0
-  - 6
-  - 4
-  - 3
-  - 2
   - 6
   - 5
   - 4
-  - 6
-  - 4
+  - 2
+  - 9
+  - 5
+  - 3
+  - 3
+  - 2
   - 3
   - 6
   - 4
@@ -4309,7 +4306,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 87f13eef4bb3e814bb226c9b12ab0fb3, type: 3}
   m_Resource: {fileID: 8300000, guid: 87f13eef4bb3e814bb226c9b12ab0fb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4790,7 +4787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1856252006
 RectTransform:
   m_ObjectHideFlags: 0
