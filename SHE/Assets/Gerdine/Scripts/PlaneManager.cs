@@ -1,47 +1,41 @@
 using UnityEngine;
 using System.Collections;
 
-public class ThreePlaneFader : MonoBehaviour
+public class MultiPlaneFader : MonoBehaviour
 {
-    [Header("Plane Renderers (assign in Inspector)")]
-    public Renderer plane1Renderer;
-    public Renderer plane2Renderer;
-    public Renderer plane3Renderer;
+    [Header("Plane Renderers (assign in Inspector, in order)")]
+    public Renderer[] planeRenderers;
 
     [Header("Timing")]
     public float initialDelay = 0f;
     public float fadeDuration = 2f;
-    public float visibleDuration = 3f;
 
-    Material _mat1;
-    Material _mat2;
-    Material _mat3;
+    [Tooltip("If left empty or wrong size, defaultVisibleDuration is used for all planes.")]
+    public float[] visibleDurations;
+    public float defaultVisibleDuration = 3f;
+
+    private Material[] _planeMats;
 
     void Start()
     {
-        // Duplicate materials so alpha edits don’t affect shared materials
-        if (plane1Renderer != null)
+        if (planeRenderers == null || planeRenderers.Length == 0)
         {
-            plane1Renderer.material = new Material(plane1Renderer.material);
-            _mat1 = plane1Renderer.material;
-            SetAlpha(_mat1, 0f);
-            plane1Renderer.gameObject.SetActive(true);
+            Debug.LogWarning("MultiPlaneFader: No planeRenderers assigned.");
+            return;
         }
 
-        if (plane2Renderer != null)
-        {
-            plane2Renderer.material = new Material(plane2Renderer.material);
-            _mat2 = plane2Renderer.material;
-            SetAlpha(_mat2, 0f);
-            plane2Renderer.gameObject.SetActive(true);
-        }
+        _planeMats = new Material[planeRenderers.Length];
 
-        if (plane3Renderer != null)
+        // Duplicate materials and start all planes invisible but active
+        for (int i = 0; i < planeRenderers.Length; i++)
         {
-            plane3Renderer.material = new Material(plane3Renderer.material);
-            _mat3 = plane3Renderer.material;
-            SetAlpha(_mat3, 0f);
-            plane3Renderer.gameObject.SetActive(true);
+            if (planeRenderers[i] == null) continue;
+
+            planeRenderers[i].material = new Material(planeRenderers[i].material);
+            _planeMats[i] = planeRenderers[i].material;
+
+            SetAlpha(_planeMats[i], 0f);
+            planeRenderers[i].gameObject.SetActive(true);
         }
 
         StartCoroutine(RunSequence());
@@ -52,33 +46,65 @@ public class ThreePlaneFader : MonoBehaviour
         if (initialDelay > 0f)
             yield return new WaitForSecondsRealtime(initialDelay);
 
-        // PHASE 1: FADE IN PLANE 1
-        yield return FadeRoutine(_mat1, 0f, 1f, fadeDuration);
-        yield return new WaitForSecondsRealtime(visibleDuration);
+        int count = _planeMats.Length;
+        if (count == 0 || _planeMats[0] == null)
+            yield break;
 
-        // PHASE 2: FADE FROM PLANE 1 INTO PLANE 2
-        yield return FadeRoutine(_mat1, 1f, 0f, fadeDuration);
-        yield return FadeRoutine(_mat2, 0f, 1f, fadeDuration);
-        yield return new WaitForSecondsRealtime(visibleDuration);
+        // 1) Fade in first plane
+        yield return FadeRoutine(_planeMats[0], 0f, 1f, fadeDuration);
+        yield return new WaitForSecondsRealtime(GetVisibleDuration(0));
 
-        // PHASE 3: FADE FROM PLANE 2 INTO PLANE 3
-        yield return FadeRoutine(_mat2, 1f, 0f, fadeDuration);
-        yield return FadeRoutine(_mat3, 0f, 1f, fadeDuration);
-        yield return new WaitForSecondsRealtime(visibleDuration);
+        // 2) Go through plane 0 -> 1 -> 2 -> ... -> last
+        for (int i = 0; i < count - 1; i++)
+        {
+            Material current = _planeMats[i];
+            Material next = _planeMats[i + 1];
 
-        // PHASE 4: FADE FROM PLANE 3 BACK TO PLANE 1 (final)
-        yield return FadeRoutine(_mat3, 1f, 0f, fadeDuration);
-        yield return FadeRoutine(_mat1, 0f, 1f, fadeDuration);
+            if (current != null)
+                yield return FadeRoutine(current, 1f, 0f, fadeDuration);
 
-        // Final state: Plane 1 fully visible, others hidden
-        SetAlpha(_mat1, 1f);
-        SetAlpha(_mat2, 0f);
-        SetAlpha(_mat3, 0f);
+            if (next != null)
+            {
+                yield return FadeRoutine(next, 0f, 1f, fadeDuration);
+                yield return new WaitForSecondsRealtime(GetVisibleDuration(i + 1));
+            }
+        }
+
+        // 3) Fade from last plane back to first and stay there
+        int lastIndex = count - 1;
+        Material lastMat = _planeMats[lastIndex];
+
+        if (lastMat != null)
+            yield return FadeRoutine(lastMat, 1f, 0f, fadeDuration);
+
+        yield return FadeRoutine(_planeMats[0], 0f, 1f, fadeDuration);
+
+        // Final state: first plane visible, all others hidden
+        for (int i = 0; i < count; i++)
+        {
+            if (_planeMats[i] == null) continue;
+            SetAlpha(_planeMats[i], (i == 0) ? 1f : 0f);
+        }
+    }
+
+    float GetVisibleDuration(int index)
+    {
+        if (visibleDurations != null &&
+            visibleDurations.Length == _planeMats.Length &&
+            index >= 0 && index < visibleDurations.Length)
+        {
+            return Mathf.Max(0f, visibleDurations[index]);
+        }
+
+        return Mathf.Max(0f, defaultVisibleDuration);
     }
 
     IEnumerator FadeRoutine(Material mat, float startAlpha, float endAlpha, float duration)
     {
-        if (mat == null || duration <= 0f)
+        if (mat == null)
+            yield break;
+
+        if (duration <= 0f)
         {
             SetAlpha(mat, endAlpha);
             yield break;
