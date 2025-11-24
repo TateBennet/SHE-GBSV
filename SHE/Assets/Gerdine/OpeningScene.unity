@@ -2430,6 +2430,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1598155377}
     m_Modifications:
+    - target: {fileID: 1190239681524528, guid: e4326d6154438b34e8e7a9971c6a588c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1664147615323532, guid: e4326d6154438b34e8e7a9971c6a588c, type: 3}
       propertyPath: m_Name
       value: Door 1 (2)
@@ -3122,7 +3126,7 @@ MonoBehaviour:
   lockerRoomContainer: {fileID: 1598155375}
   lockerRoomAnimator: {fileID: 1598155376}
   animationStateName: LockerRoom
-  lockerRoomLight: {fileID: 1494294024}
+  lockerRoomLight: {fileID: 0}
   nextSceneName: IntroFinal
   delayAfterLight: 2
   objectsToDisableOnStart:
@@ -3797,7 +3801,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466713647}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e11344e82b95f784380d01e10d8de995, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 09160d1338ab4e74f8ec5c1affdfaa71, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3965,7 +3969,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.9150943, g: 0.83422375, b: 0.5222944, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 1.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4027,12 +4031,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494294022}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 1.01, z: 2.32}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.873, y: 0.492, z: -5.526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1598155377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508657435 stripped
 GameObject:
@@ -4099,6 +4103,7 @@ Transform:
   - {fileID: 1689088979}
   - {fileID: 1832755780}
   - {fileID: 944303627}
+  - {fileID: 1494294025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1598155378
@@ -5592,7 +5597,6 @@ SceneRoots:
   - {fileID: 1320949207}
   - {fileID: 497715401}
   - {fileID: 1312517962}
-  - {fileID: 1494294025}
   - {fileID: 1741497095}
   - {fileID: 361169629}
   - {fileID: 1598155377}
