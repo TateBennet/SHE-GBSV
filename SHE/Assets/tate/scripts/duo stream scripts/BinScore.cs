@@ -5,6 +5,7 @@ public class BinScore : MonoBehaviour
 {
     public string sceneToLoad = "NextScene";
     private bool loadedScene = false;
+    public FadeToBlack fade;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,8 +14,15 @@ public class BinScore : MonoBehaviour
             if (loadedScene == true)
                 return;
             Debug.Log("ball scored, loading volleyball scene");
-            SceneManager.LoadScene(sceneToLoad);
-            loadedScene = true;
+            StartCoroutine(LoadAfterDelay());
         }
+    }
+
+    private System.Collections.IEnumerator LoadAfterDelay()
+    {
+        fade.Blackout();
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(sceneToLoad);
+        loadedScene = true;
     }
 }

@@ -3968,7 +3968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1464403004
 Transform:
   m_ObjectHideFlags: 0
@@ -3998,6 +3998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadePlaneRenderer: {fileID: 1464403007}
   fadeDuration: 1
+  plane: {fileID: 1464403003}
 --- !u!64 &1464403006
 MeshCollider:
   m_ObjectHideFlags: 0
