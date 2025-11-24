@@ -1,131 +1,172 @@
 using UnityEngine;
+using UnityEngine.Video;
 using System.Collections;
 
-public class MultiPlaneFader : MonoBehaviour
+public class TwoVideoPlaneSequenceWithFade : MonoBehaviour
 {
-    [Header("Plane Renderers (assign in Inspector, in order)")]
-    public Renderer[] planeRenderers;
+    [Header("Plane Objects (these should contain a Renderer)")]
+    public Renderer plane1Renderer;
+    public Renderer plane2Renderer;
 
-    [Header("Timing")]
-    public float initialDelay = 0f;
-    public float fadeDuration = 2f;
+    [Header("Video Players")]
+    public VideoPlayer video1;
+    public VideoPlayer video2;
 
-    [Tooltip("If left empty or wrong size, defaultVisibleDuration is used for all planes.")]
-    public float[] visibleDurations;
-    public float defaultVisibleDuration = 3f;
+    [Header("Fade Settings")]
+    public float fadeDuration = 1.5f;   // how long each fade should take
 
-    private Material[] _planeMats;
+    private Material mat1;
+    private Material mat2;
 
-    void Start()
+    private void Start()
     {
-        if (planeRenderers == null || planeRenderers.Length == 0)
+        if (!plane1Renderer || !plane2Renderer || !video1 || !video2)
         {
-            Debug.LogWarning("MultiPlaneFader: No planeRenderers assigned.");
+            Debug.LogWarning("TwoVideoPlaneSequenceWithFade: Please assign both plane renderers and both VideoPlayers.");
             return;
         }
 
-        _planeMats = new Material[planeRenderers.Length];
+        // Duplicate materials so alpha changes don't affect shared materials
+        plane1Renderer.material = new Material(plane1Renderer.material);
+        plane2Renderer.material = new Material(plane2Renderer.material);
 
-        // Duplicate materials and start all planes invisible but active
-        for (int i = 0; i < planeRenderers.Length; i++)
-        {
-            if (planeRenderers[i] == null) continue;
+        mat1 = plane1Renderer.material;
+        mat2 = plane2Renderer.material;
 
-            planeRenderers[i].material = new Material(planeRenderers[i].material);
-            _planeMats[i] = planeRenderers[i].material;
+        SetAlpha(mat1, 0f);
+        SetAlpha(mat2, 0f);
 
-            SetAlpha(_planeMats[i], 0f);
-            planeRenderers[i].gameObject.SetActive(true);
-        }
+        // We control the flow, so no auto-looping
+        video1.isLooping = false;
+        video2.isLooping = false;
 
-        StartCoroutine(RunSequence());
+        // Subscribe to "finished" events
+        video1.loopPointReached += OnVideo1Finished;
+        video2.loopPointReached += OnVideo2Finished;
+
+        // Start sequence: fade in plane 1 + play video 1
+        StartCoroutine(StartVideo1Routine());
     }
 
-    IEnumerator RunSequence()
+    private void OnDestroy()
     {
-        if (initialDelay > 0f)
-            yield return new WaitForSecondsRealtime(initialDelay);
-
-        int count = _planeMats.Length;
-        if (count == 0 || _planeMats[0] == null)
-            yield break;
-
-        // 1) Fade in first plane
-        yield return FadeRoutine(_planeMats[0], 0f, 1f, fadeDuration);
-        yield return new WaitForSecondsRealtime(GetVisibleDuration(0));
-
-        // 2) Go through plane 0 -> 1 -> 2 -> ... -> last
-        for (int i = 0; i < count - 1; i++)
-        {
-            Material current = _planeMats[i];
-            Material next = _planeMats[i + 1];
-
-            if (current != null)
-                yield return FadeRoutine(current, 1f, 0f, fadeDuration);
-
-            if (next != null)
-            {
-                yield return FadeRoutine(next, 0f, 1f, fadeDuration);
-                yield return new WaitForSecondsRealtime(GetVisibleDuration(i + 1));
-            }
-        }
-
-        // 3) Fade from last plane back to first and stay there
-        int lastIndex = count - 1;
-        Material lastMat = _planeMats[lastIndex];
-
-        if (lastMat != null)
-            yield return FadeRoutine(lastMat, 1f, 0f, fadeDuration);
-
-        yield return FadeRoutine(_planeMats[0], 0f, 1f, fadeDuration);
-
-        // Final state: first plane visible, all others hidden
-        for (int i = 0; i < count; i++)
-        {
-            if (_planeMats[i] == null) continue;
-            SetAlpha(_planeMats[i], (i == 0) ? 1f : 0f);
-        }
+        if (video1 != null) video1.loopPointReached -= OnVideo1Finished;
+        if (video2 != null) video2.loopPointReached -= OnVideo2Finished;
     }
 
-    float GetVisibleDuration(int index)
-    {
-        if (visibleDurations != null &&
-            visibleDurations.Length == _planeMats.Length &&
-            index >= 0 && index < visibleDurations.Length)
-        {
-            return Mathf.Max(0f, visibleDurations[index]);
-        }
+    // --- START VIDEOS ---
 
-        return Mathf.Max(0f, defaultVisibleDuration);
+    IEnumerator StartVideo1Routine()
+    {
+        plane1Renderer.gameObject.SetActive(true);
+        plane2Renderer.gameObject.SetActive(true); // keep active so crossfades work
+
+        SetAlpha(mat1, 0f);
+        SetAlpha(mat2, 0f);
+
+        video1.time = 0;
+        video1.Play();
+
+        // Fade in plane 1
+        yield return Fade(mat1, 0f, 1f);
     }
 
-    IEnumerator FadeRoutine(Material mat, float startAlpha, float endAlpha, float duration)
+    IEnumerator StartVideo2Routine()
     {
-        if (mat == null)
-            yield break;
+        // Video 1 has finished, now fade from plane 1 to plane 2 and start video 2
+        plane1Renderer.gameObject.SetActive(true);
+        plane2Renderer.gameObject.SetActive(true);
 
-        if (duration <= 0f)
-        {
-            SetAlpha(mat, endAlpha);
-            yield break;
-        }
+        // Make sure plane2 starts invisible
+        SetAlpha(mat2, 0f);
 
+        // Start video 2 from beginning
+        video2.time = 0;
+        video2.Play();
+
+        // Crossfade visuals from plane 1 -> plane 2
+        yield return Crossfade(mat1, mat2);
+    }
+
+    // --- EVENTS ---
+
+    private void OnVideo1Finished(VideoPlayer vp)
+    {
+        // When video 1 ends, go to video 2 (with fade)
+        StartCoroutine(StartVideo2Routine());
+    }
+
+    private void OnVideo2Finished(VideoPlayer vp)
+    {
+        // When video 2 ends, fade back to plane 1 and STOP (no loop)
+        StartCoroutine(FadeBackToPlane1AndStop());
+    }
+
+    // --- FINAL FADE BACK & STOP ---
+
+    IEnumerator FadeBackToPlane1AndStop()
+    {
+        // We assume video1 has already finished and its last frame is on mat1
+        // If you prefer the first frame, you can set video1.time = 0; video1.Play(); video1.Pause();
+
+        // Make sure both planes are active for the fade
+        plane1Renderer.gameObject.SetActive(true);
+        plane2Renderer.gameObject.SetActive(true);
+
+        // Crossfade from plane 2 (currently visible) back to plane 1
+        yield return Crossfade(mat2, mat1);
+
+        // Stop video2 so nothing else plays
+        video2.Stop();
+
+        // Optional: you can also stop video1 here if you like
+        // video1.Stop();
+
+        // Final state:
+        // - Plane 1 fully visible
+        // - Plane 2 invisible (you can also disable its GameObject)
+        SetAlpha(mat1, 1f);
+        SetAlpha(mat2, 0f);
+        plane1Renderer.gameObject.SetActive(true);
+        plane2Renderer.gameObject.SetActive(false);
+    }
+
+    // --- FADE HELPERS ---
+
+    IEnumerator Fade(Material mat, float from, float to)
+    {
         float t = 0f;
-        while (t < duration)
+        while (t < fadeDuration)
         {
             t += Time.unscaledDeltaTime;
-            float lerp = Mathf.Clamp01(t / duration);
-            float a = Mathf.Lerp(startAlpha, endAlpha, lerp);
+            float a = Mathf.Lerp(from, to, t / fadeDuration);
             SetAlpha(mat, a);
             yield return null;
         }
+        SetAlpha(mat, to);
+    }
 
-        SetAlpha(mat, endAlpha);
+    IEnumerator Crossfade(Material fromMat, Material toMat)
+    {
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float lerp = t / fadeDuration;
+
+            SetAlpha(fromMat, Mathf.Lerp(1f, 0f, lerp));
+            SetAlpha(toMat, Mathf.Lerp(0f, 1f, lerp));
+
+            yield return null;
+        }
+
+        SetAlpha(fromMat, 0f);
+        SetAlpha(toMat, 1f);
     }
 
     void SetAlpha(Material mat, float alpha)
     {
-        if (mat == null) return;
+        if (!mat) return;
 
         if (mat.HasProperty("_BaseColor"))
         {
