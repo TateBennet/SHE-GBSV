@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Gerdine/StartButton.unity
-    guid: 56e0ff7a73bf3b24bbe59c7ae0275f1f
-  - enabled: 1
     path: Assets/Gerdine/OpeningScene.unity
     guid: 3874f8bfae4b2fa4f9cf563cb069ca3d
   - enabled: 1
