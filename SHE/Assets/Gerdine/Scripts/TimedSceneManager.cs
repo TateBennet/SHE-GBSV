@@ -3,6 +3,10 @@ using System.Collections;
 
 public class TimedSceneManager : MonoBehaviour
 {
+    [Header("Start Behaviour")]
+    [Tooltip("If true, sequence starts automatically on scene load (old behaviour). If false, you must call BeginSequence() from a button.")]
+    public bool autoStartOnAwake = false;
+
     [Header("Plane Crossfade (Videos)")]
     public Renderer firstPlaneRenderer;
     public Renderer secondPlaneRenderer;
@@ -12,19 +16,21 @@ public class TimedSceneManager : MonoBehaviour
 
     [Header("Title Text (stays until end)")]
     public GameObject titleText;
-    public float titleAppearTime = 0f; // seconds from scene start
+    public float titleAppearTime = 0f; // seconds from SEQUENCE start
 
     [Header("Other Texts (timed show/hide)")]
     public GameObject[] textObjects;
-    public float[] textAppearTimes;      // when each should appear (from scene start)
+    public float[] textAppearTimes;      // when each should appear (from SEQUENCE start)
     public float[] textVisibleDurations; // how long they stay visible (>0 = auto-hide)
 
     Material _firstMat;
     Material _secondMat;
 
+    bool _sequenceStarted = false;
+
     void Start()
     {
-        // --- plane setup (same idea as before) ---
+        // --- plane setup ---
         if (firstPlaneRenderer != null)
         {
             firstPlaneRenderer.material = new Material(firstPlaneRenderer.material);
@@ -64,7 +70,23 @@ public class TimedSceneManager : MonoBehaviour
             }
         }
 
-        // Start routines
+        // Only auto-start if you explicitly want that
+        if (autoStartOnAwake)
+        {
+            BeginSequence();
+        }
+    }
+
+    /// <summary>
+    /// Call this from your button to start the entire timed sequence.
+    /// </summary>
+    public void BeginSequence()
+    {
+        if (_sequenceStarted)
+            return;
+
+        _sequenceStarted = true;
+
         StartCoroutine(CrossfadePlanesRoutine());
         StartCoroutine(HandleTitleText());
         StartCoroutine(HandleAllTextsRoutine());
@@ -155,7 +177,7 @@ public class TimedSceneManager : MonoBehaviour
             textObj.SetActive(true);
 
         if (visibleDuration <= 0f)
-            yield break; // stay on forever (for non-title you could use this too)
+            yield break; // stay on forever
 
         yield return new WaitForSecondsRealtime(visibleDuration);
 

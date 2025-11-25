@@ -1,28 +1,38 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneChangeOnPressed : MonoBehaviour
+public class StartSceneButton : MonoBehaviour
 {
-    [Header("Scene To Load")]
-    public string sceneName = "NextSceneName";
+    [Header("Scene Manager to Start")]
+    public TimedSceneManager timedSceneManager;
 
-    private void Start()
+    [Header("Objects to Hide When Started (optional)")]
+    public GameObject[] objectsToDisableOnStart;   // e.g. the button, intro canvas, etc.
+
+    private bool _hasStarted = false;
+
+    // Hook this up to your UI Button OnClick (or VR button OnPressed)
+    public void OnStartButtonPressed()
     {
-        Debug.Log("SceneChangeOnPressed: Start() on " + gameObject.name);
-    }
-
-    // Hook this to PhysicsGadgetButton.OnPressed in the Inspector
-    public void ChangeScene()
-    {
-        Debug.Log("SceneChangeOnPressed: ChangeScene() called on " + gameObject.name);
-
-        if (string.IsNullOrEmpty(sceneName))
-        {
-            Debug.LogError("SceneChangeOnPressed: No scene name assigned!");
+        if (_hasStarted)
             return;
+
+        _hasStarted = true;
+
+        if (timedSceneManager != null)
+        {
+            timedSceneManager.BeginSequence();
+        }
+        else
+        {
+            Debug.LogWarning("StartSceneButton: No TimedSceneManager assigned!");
         }
 
-        Debug.Log("SceneChangeOnPressed: Loading scene: " + sceneName);
-        SceneManager.LoadScene(sceneName);
+        if (objectsToDisableOnStart != null)
+        {
+            foreach (var obj in objectsToDisableOnStart)
+            {
+                if (obj != null) obj.SetActive(false);
+            }
+        }
     }
 }
