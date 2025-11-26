@@ -2012,6 +2012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sticky note 2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a23d76aff2f1f246baad61bb5400a93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2023,6 +2027,11 @@ PrefabInstance:
 --- !u!4 &299524263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3a23d76aff2f1f246baad61bb5400a93, type: 3}
+  m_PrefabInstance: {fileID: 299524262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &299524264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a23d76aff2f1f246baad61bb5400a93, type: 3}
   m_PrefabInstance: {fileID: 299524262}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &307636200
@@ -9537,9 +9546,17 @@ PrefabInstance:
       value: moveup1
       objectReference: {fileID: 0}
     - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
+      propertyPath: uiToEnable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
       propertyPath: objectsToKeep.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
+      propertyPath: 'uiToEnable.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2069156611}
     - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
       propertyPath: 'objectsToKeep.Array.data[0]'
       value: 
@@ -11546,6 +11563,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3a23d76aff2f1f246baad61bb5400a93, type: 3}
   m_PrefabInstance: {fileID: 2069156609}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2069156611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a23d76aff2f1f246baad61bb5400a93, type: 3}
+  m_PrefabInstance: {fileID: 2069156609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2103125648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11976,6 +11998,14 @@ PrefabInstance:
       propertyPath: nextAnimationName
       value: moveup2
       objectReference: {fileID: 0}
+    - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
+      propertyPath: uiToEnable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
+      propertyPath: 'uiToEnable.Array.data[0]'
+      value: 
+      objectReference: {fileID: 299524264}
     - target: {fileID: 7663070010496567638, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.04729
