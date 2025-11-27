@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class TwoVideoPlaneSequenceWithFade : MonoBehaviour
 {
     [Header("Plane Objects (these should contain a Renderer)")]
@@ -129,6 +133,13 @@ public class TwoVideoPlaneSequenceWithFade : MonoBehaviour
         SetAlpha(mat2, 0f);
         plane1Renderer.gameObject.SetActive(true);
         plane2Renderer.gameObject.SetActive(false);
+
+        // --- Quit application after sequence completes ---
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;    // stop Play Mode in editor
+#else
+        Application.Quit();                    // quit the built application
+#endif
     }
 
     // --- FADE HELPERS ---
