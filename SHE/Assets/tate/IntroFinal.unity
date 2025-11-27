@@ -1918,6 +1918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: phone2k
       objectReference: {fileID: 0}
+    - target: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8980,20 +8984,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8793658472086780932, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
   m_PrefabInstance: {fileID: 2140397693}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1735238660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735238654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc18f5d74a09bf419efebd48fe350bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToActivate: {fileID: 1997601218}
-  itemToDeactivate: {fileID: 0}
 --- !u!4 &1735507695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d3c47dfe6f8d0c44a1cffc63225f46f, type: 3}
@@ -9555,7 +9545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
       propertyPath: uiToEnable.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
       propertyPath: objectsToKeep.Array.size
@@ -9565,6 +9555,10 @@ PrefabInstance:
       propertyPath: 'uiToEnable.Array.data[0]'
       value: 
       objectReference: {fileID: 2069156611}
+    - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
+      propertyPath: 'uiToEnable.Array.data[1]'
+      value: 
+      objectReference: {fileID: 384210699}
     - target: {fileID: 6521693784810472069, guid: dbddc28a6bc4b73448aab2c6fa89393e, type: 3}
       propertyPath: 'objectsToKeep.Array.data[0]'
       value: 
@@ -11981,7 +11975,7 @@ PrefabInstance:
     - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: keepObj
       value: 
-      objectReference: {fileID: 1997601218}
+      objectReference: {fileID: 0}
     - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: audioClip
       value: 
@@ -12008,12 +12002,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: uiToEnable.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: 'uiToEnable.Array.data[0]'
       value: 
       objectReference: {fileID: 299524264}
+    - target: {fileID: 5306158662638207293, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
+      propertyPath: 'uiToEnable.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1997601218}
     - target: {fileID: 7663070010496567638, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.04729
@@ -12096,10 +12094,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8130210309040620852, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 299524263}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8161236549055702718, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1735238660}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c6acdbb7edb15c4ea2f08329fe10b36, type: 3}
 --- !u!4 &2140397694 stripped
 Transform:
