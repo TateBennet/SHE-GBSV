@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d33118c5a2eb6a49ae8cc57d0c7a8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: VBFinal
+  sceneToLoad: VBFinal_Tier1
   fade: {fileID: 1408077502}
 --- !u!65 &235880354
 BoxCollider:
