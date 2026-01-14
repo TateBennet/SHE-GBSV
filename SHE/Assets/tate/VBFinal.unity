@@ -377,6 +377,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &131667742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131667743}
+  - component: {fileID: 131667744}
+  m_Layer: 0
+  m_Name: player c
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &131667743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131667742}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 457097536}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &131667744
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131667742}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 4
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 0
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &157581525
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +775,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1312232303}
+  m_Children: []
   m_Father: {fileID: 457097536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &323235128
@@ -1179,114 +1246,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &435947553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 435947554}
-  - component: {fileID: 435947558}
-  - component: {fileID: 435947557}
-  - component: {fileID: 435947556}
-  m_Layer: 0
-  m_Name: VideoSphere2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &435947554
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435947553}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39073548, y: -3.0504596, z: -2.1947262}
-  m_LocalScale: {x: -100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 505326226}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &435947556
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435947553}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &435947557
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435947553}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 81539d831aa237c419ad5111574c9402, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &435947558
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435947553}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &457097535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1277,8 @@ Transform:
   m_Children:
   - {fileID: 323235127}
   - {fileID: 505326226}
+  - {fileID: 131667743}
+  - {fileID: 1312232303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499988723
@@ -1478,8 +1439,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 435947554}
+  m_Children: []
   m_Father: {fileID: 457097536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &505326227
@@ -3896,7 +3856,7 @@ Transform:
   m_LocalScale: {x: -100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 323235127}
+  m_Father: {fileID: 457097536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1373870170 stripped
 GameObject:
@@ -4092,6 +4052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1413691765}
   - component: {fileID: 1413691768}
+  - component: {fileID: 1413691769}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -4121,7 +4082,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413691763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2a78e134c286a94390c95b9eb54a1a9, type: 3}
   m_Name: 
@@ -4136,10 +4097,35 @@ MonoBehaviour:
   - file:///sdcard/Download/VBSceneBPass2.mp4
   - file:///sdcard/Download/VBSceneCD.mp4
   sphereA: {fileID: 1312232301}
-  sphereB: {fileID: 435947557}
+  sphereB: {fileID: 0}
   currentVideoIndex: -1
   currentVideoName: 
   usingA: 1
+--- !u!114 &1413691769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413691763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2e8ae13b6c2814f8a12a79766e08a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerA: {fileID: 323235128}
+  playerB: {fileID: 505326227}
+  playerC: {fileID: 131667744}
+  sphere: {fileID: 1312232301}
+  videoFiles:
+  - C:\GBSV\VBSceneA.mp4
+  - C:\GBSV\VBSceneB.mp4
+  - C:\GBSV\VBSceneBFail.mp4
+  - C:\GBSV\VBSceneBPass.mp4
+  - C:\GBSV\VBSceneBPass2.mp4
+  - C:\GBSV\VBSceneCD.mp4
+  prepareTimeout: 30
+  primeDelay: 0.05
 --- !u!1 &1471829215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4694,6 +4680,7 @@ GameObject:
   - component: {fileID: 1709669922}
   - component: {fileID: 1709669924}
   - component: {fileID: 1709669923}
+  - component: {fileID: 1709669925}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -4744,7 +4731,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709669920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a6342d746fbb4449229808a0d6c0b8, type: 3}
   m_Name: 
@@ -4787,6 +4774,57 @@ MonoBehaviour:
     - {fileID: 594949188}
     - {fileID: 2145568103}
   startLeadSeconds: 0.12
+--- !u!114 &1709669925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709669920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523a6c7a216f75a4fb8817d397ae563d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoStreamManager: {fileID: 1413691769}
+  duoVideoAudioGroups:
+  - videoName: VBSceneA
+    audioSources:
+    - {fileID: 1399103988}
+    - {fileID: 514515391}
+    - {fileID: 1185392966}
+    - {fileID: 98831771}
+  - videoName: VBSceneB
+    audioSources:
+    - {fileID: 519620010}
+    - {fileID: 1944460503}
+    - {fileID: 1977761017}
+    - {fileID: 2002852987}
+  - videoName: VBSceneBFail
+    audioSources:
+    - {fileID: 362855073}
+    - {fileID: 1633553641}
+    - {fileID: 399471886}
+  - videoName: VBSceneBPass
+    audioSources:
+    - {fileID: 499988725}
+    - {fileID: 1828945056}
+    - {fileID: 1087123068}
+    - {fileID: 994188984}
+  - videoName: VBSceneBPass2
+    audioSources:
+    - {fileID: 157581527}
+    - {fileID: 1223058040}
+    - {fileID: 743394081}
+    - {fileID: 539526520}
+  - videoName: VBSceneCD
+    audioSources:
+    - {fileID: 572901839}
+    - {fileID: 1555346631}
+    - {fileID: 594949188}
+    - {fileID: 2145568103}
+  startLeadSeconds: 0.12
+  videoHeadStartSeconds: 0.03
 --- !u!1 &1779147167
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,11 +5519,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b2e85a82a56e047964116e1717e09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoManager: {fileID: 1413691768}
+  videoManager: {fileID: 1413691769}
   perVideoCues:
   - clip: {fileID: 0}
     urlContains: VBSceneA.mp4
     cues:
+    - timeSeconds: 3
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadPrimary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 1
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 81
       onCue:
         m_PersistentCalls:
@@ -5526,9 +5582,9 @@ MonoBehaviour:
       onCue:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1413691768}
-            m_TargetAssemblyTypeName: DuoStreamPro, Assembly-CSharp
-            m_MethodName: PlayNextVideo
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: CommitBranch
             m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
@@ -5567,6 +5623,36 @@ MonoBehaviour:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
               m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 3
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadPrimary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadSecondary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 3
               m_FloatArgument: 0
               m_StringArgument: 
               m_BoolArgument: 0
@@ -5648,6 +5734,54 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBFail.mp4
     cues:
+    - timeSeconds: 3
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadPrimary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 3
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadSecondary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 4
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 5
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2058710587}
+            m_TargetAssemblyTypeName: DuoCountChecker, Assembly-CSharp
+            m_MethodName: FailVideoCheck
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 8
       onCue:
         m_PersistentCalls:
@@ -5687,6 +5821,36 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBPass.mp4
     cues:
+    - timeSeconds: 3
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadPrimary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadSecondary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 4
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 14
       onCue:
         m_PersistentCalls:
@@ -5726,6 +5890,36 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBPass2.mp4
     cues:
+    - timeSeconds: 3
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadPrimary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 2
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1413691769}
+            m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
+            m_MethodName: PreloadSecondary
+            m_Mode: 3
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 5
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 19
       onCue:
         m_PersistentCalls:
@@ -5912,7 +6106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   functionDelay: 5
-  DSP: {fileID: 1413691768}
+  TP: {fileID: 1413691769}
+  alreadyInFail: 0
 --- !u!1 &2092139007
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class DuoCueSystem : MonoBehaviour
 
     [Header("References")]
     [Tooltip("Reference to your ProVidMngr that manages both players.")]
-    public DuoStreamPro videoManager;
+    public TriStreamPro videoManager;
 
     [Header("Per-video cue sets")]
     public List<ClipCues> perVideoCues = new List<ClipCues>();
@@ -59,7 +59,7 @@ public class DuoCueSystem : MonoBehaviour
     {
         if (!videoManager)
         {
-            videoManager = FindFirstObjectByType<DuoStreamPro>();
+            videoManager = FindFirstObjectByType<TriStreamPro>();
 
         }
 
