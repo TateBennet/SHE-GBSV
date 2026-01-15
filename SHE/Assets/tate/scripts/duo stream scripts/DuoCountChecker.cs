@@ -5,24 +5,16 @@ public class DuoCountChecker : MonoBehaviour
 {
     public float functionDelay = 3f;
     public TriStreamPro TP;
-    public FadeToBlack Fade;
     public bool alreadyInFail = false;
 
     public void CheckCounter()
     {
         StartCoroutine(CheckCounter_Delayed());
-        StartCoroutine(DelayBlackscreen());
     }
 
     public void FailVideoCheck()
     {
         alreadyInFail = true;
-    }
-
-    private IEnumerator DelayBlackscreen()
-    {
-        yield return new WaitForSeconds(2);
-        Fade.Blackout();
     }
 
     private IEnumerator CheckCounter_Delayed()
