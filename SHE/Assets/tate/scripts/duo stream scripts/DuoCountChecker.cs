@@ -5,10 +5,31 @@ public class DuoCountChecker : MonoBehaviour
 {
     public float functionDelay = 3f;
     public TriStreamPro TP;
+    public FadeToBlack Fade;
     public bool alreadyInFail = false;
 
     public void CheckCounter()
     {
+        StartCoroutine(CheckCounter_Delayed());
+        StartCoroutine(DelayBlackscreen());
+    }
+
+    public void FailVideoCheck()
+    {
+        alreadyInFail = true;
+    }
+
+    private IEnumerator DelayBlackscreen()
+    {
+        yield return new WaitForSeconds(2);
+        Fade.Blackout();
+    }
+
+    private IEnumerator CheckCounter_Delayed()
+    {
+
+        yield return new WaitForSeconds(3f);
+
         // decide which video we want
         if (VballSFX.iterations >= 5)
         {
@@ -18,7 +39,7 @@ public class DuoCountChecker : MonoBehaviour
         {
             if(alreadyInFail == true)
             {
-                TP.ReplayActive();
+                TP.ReplayActiveResynced();
                 alreadyInFail = false;
             }
             else TP.CommitBranch(2);
@@ -39,11 +60,6 @@ public class DuoCountChecker : MonoBehaviour
         {
             Debug.Log("Counter is " + VballSFX.counter);
         }
-    }
-
-    public void FailVideoCheck()
-    {
-        alreadyInFail = true;
     }
 
 }

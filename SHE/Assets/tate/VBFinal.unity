@@ -4118,12 +4118,12 @@ MonoBehaviour:
   playerC: {fileID: 131667744}
   sphere: {fileID: 1312232301}
   videoFiles:
-  - C:\GBSV\VBSceneA.mp4
-  - C:\GBSV\VBSceneB.mp4
-  - C:\GBSV\VBSceneBFail.mp4
-  - C:\GBSV\VBSceneBPass.mp4
-  - C:\GBSV\VBSceneBPass2.mp4
-  - C:\GBSV\VBSceneCD.mp4
+  - file:///sdcard/Download/VBSceneA.mp4
+  - file:///sdcard/Download/VBSceneB.mp4
+  - file:///sdcard/Download/VBSceneBFail.mp4
+  - file:///sdcard/Download/VBSceneBPass.mp4
+  - file:///sdcard/Download/VBSceneBPass2.mp4
+  - file:///sdcard/Download/VBSceneCD.mp4
   prepareTimeout: 30
   primeDelay: 0.05
 --- !u!1 &1471829215
@@ -5629,7 +5629,7 @@ MonoBehaviour:
             m_CallState: 2
       repeat: 0
       repeatInterval: 0
-    - timeSeconds: 3
+    - timeSeconds: 1
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -5645,6 +5645,12 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 4
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
           - m_Target: {fileID: 1413691769}
             m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
             m_MethodName: PreloadSecondary
@@ -5734,7 +5740,37 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBFail.mp4
     cues:
-    - timeSeconds: 3
+    - timeSeconds: 0
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: WhiteOut
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: TurnOffPlane
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 1
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -5750,6 +5786,12 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 4
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
           - m_Target: {fileID: 1413691769}
             m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
             m_MethodName: PreloadSecondary
@@ -5821,7 +5863,37 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBPass.mp4
     cues:
-    - timeSeconds: 3
+    - timeSeconds: 0
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: WhiteOut
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: TurnOffPlane
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 1
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -5837,6 +5909,12 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 4
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
           - m_Target: {fileID: 1413691769}
             m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
             m_MethodName: PreloadSecondary
@@ -5890,7 +5968,37 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneBPass2.mp4
     cues:
-    - timeSeconds: 3
+    - timeSeconds: 0
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: WhiteOut
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: TurnOffPlane
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 1
       onCue:
         m_PersistentCalls:
           m_Calls:
@@ -5906,6 +6014,12 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
+    - timeSeconds: 4
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
           - m_Target: {fileID: 1413691769}
             m_TargetAssemblyTypeName: TriStreamPro, Assembly-CSharp
             m_MethodName: PreloadSecondary
@@ -5959,6 +6073,36 @@ MonoBehaviour:
   - clip: {fileID: 0}
     urlContains: VBSceneCD.mp4
     cues:
+    - timeSeconds: 0
+      onCue:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: WhiteOut
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 1471829216}
+            m_TargetAssemblyTypeName: FadeToBlack, Assembly-CSharp
+            m_MethodName: TurnOffPlane
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      repeat: 0
+      repeatInterval: 0
     - timeSeconds: 20
       onCue:
         m_PersistentCalls:
@@ -6107,6 +6251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   functionDelay: 5
   TP: {fileID: 1413691769}
+  Fade: {fileID: 1471829216}
   alreadyInFail: 0
 --- !u!1 &2092139007
 GameObject:

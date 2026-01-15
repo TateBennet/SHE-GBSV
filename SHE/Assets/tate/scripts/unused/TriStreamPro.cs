@@ -167,13 +167,32 @@ public class TriStreamPro : MonoBehaviour
         OnVideoResumed?.Invoke();
     }
 
-    public void ReplayActive()
+    public void ReplayActiveResynced()
+    {
+        StartCoroutine(ReplayActiveResynced_Co());
+    }
+
+    private IEnumerator ReplayActiveResynced_Co()
     {
         var vp = GetActivePlayer();
-        if (!vp) return;
+        if (!vp) yield break;
 
+        // Stop playback cleanly
         vp.Pause();
         vp.time = 0;
+
+        // Prime first frame so texture is valid (same trick as prepare)
         vp.Play();
+        yield return null;
+        vp.Pause();
+        vp.frame = 0;
+        yield return null;
+
+        // IMPORTANT: kick the audio manager’s normal pipeline:
+        // HandleVideoChanged() will stop/rewind audio sources + find the correct group
+        // HandlePreparedAndPaused() will schedule both video & audio at DSP time
+        OnVideoChanged?.Invoke();
+        OnVideoPreparedAndPaused?.Invoke();
     }
+
 }

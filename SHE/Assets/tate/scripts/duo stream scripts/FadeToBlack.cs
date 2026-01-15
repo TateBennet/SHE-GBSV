@@ -15,12 +15,18 @@ public class FadeToBlack : MonoBehaviour
 
     public void TurnOffPlane()
     {
-        plane.SetActive(false);
+        StartCoroutine(WaitTurnOff());
     }
 
     public void WhiteOut()
     {
         StartCoroutine(Fade(0f));
+    }
+
+    private IEnumerator WaitTurnOff()
+    {
+        yield return new WaitForSeconds(1);
+        plane.SetActive(false);
     }
 
     private IEnumerator Fade(float targetAlpha)
