@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -19,6 +18,20 @@ public class TriStreamPro : MonoBehaviour
     [Header("Video Files")]
     public List<string> videoFiles = new();
 
+    [Serializable]
+    public class VideoStartOverride
+    {
+        [Tooltip("Index into videoFiles (same index you pass to CommitBranch).")]
+        public int videoIndex;
+
+        [Tooltip("Start time (seconds) when this video becomes active.")]
+        public double startTimeSeconds = 0;
+    }
+
+    [Header("Start Time Overrides (optional)")]
+    [Tooltip("If a video index is listed here, it will start at startTimeSeconds instead of 0.")]
+    public List<VideoStartOverride> startTimeOverrides = new();
+
     [Header("Timing")]
     public float prepareTimeout = 30f;
     public float primeDelay = 0.05f;
@@ -27,12 +40,17 @@ public class TriStreamPro : MonoBehaviour
     private int currentIndex = -1;
     private readonly int[] loadedIndex = { -1, -1, -1 };
 
+    // NEW: expose the active video's start offset so audio can match it
+    private double currentStartOffsetSeconds = 0;
+    public double GetCurrentStartOffsetSeconds() => currentStartOffsetSeconds;
+
     public event Action OnVideoPreparedAndPaused;
     public event Action OnVideoStarted;
     public event Action OnVideoPaused;
     public event Action OnVideoResumed;
     public event Action OnVideoChanged;
-    VideoPlayer[] players;
+
+    private VideoPlayer[] players;
 
     void Awake()
     {
@@ -44,6 +62,10 @@ public class TriStreamPro : MonoBehaviour
             p.skipOnDrop = true;
             p.waitForFirstFrame = true;
             p.renderMode = VideoRenderMode.APIOnly;
+
+            // Optional safety: ensure we don't loop unless you explicitly want it.
+            // (Won't affect most setups, but keeps behavior predictable.)
+            // p.isLooping = false;
         }
     }
 
@@ -74,7 +96,12 @@ public class TriStreamPro : MonoBehaviour
 
     public VideoPlayer GetActivePlayer() => players[activeSlot];
     public int GetCurrentVideoIndex() => currentIndex;
-    public string GetCurrentVideoName() => Path.GetFileNameWithoutExtension(videoFiles[currentIndex]);
+
+    public string GetCurrentVideoName()
+    {
+        if (currentIndex < 0 || currentIndex >= videoFiles.Count) return string.Empty;
+        return Path.GetFileNameWithoutExtension(videoFiles[currentIndex]);
+    }
 
     public void BeginActiveAtDSP(double dsp)
     {
@@ -90,7 +117,40 @@ public class TriStreamPro : MonoBehaviour
         activeSlot = slot;
         currentIndex = index;
 
-        BindTexture(players[slot]);
+        var vp = players[slot];
+
+        // NEW: start-time override (defaults to 0 if not configured)
+        double startTime = GetStartTimeForIndex(index);
+        currentStartOffsetSeconds = startTime;
+
+        if (startTime > 0)
+        {
+            // Seek while paused (video is paused after PrepareIntoSlot priming)
+            vp.time = startTime;
+
+            // Prime texture at the seeked time so the first rendered frame matches.
+            // IMPORTANT: Play() can advance time slightly, so we re-apply the exact seek after.
+            vp.Play();
+            yield return null;
+            vp.Pause();
+
+            // Re-apply exact seek after priming to avoid tiny drift
+            vp.time = startTime;
+        }
+        else
+        {
+            // Preserve existing behavior
+            vp.time = 0;
+        }
+
+        // Wait until the video has a valid texture after seek/prime.
+        // This prevents a 1–2 frame “black flash” when the clip starts with black.
+        yield return null; // at least one frame after prime
+        while (vp.texture == null)
+            yield return null;
+
+        BindTexture(vp);
+
         OnVideoChanged?.Invoke();
         OnVideoPreparedAndPaused?.Invoke();
     }
@@ -111,8 +171,12 @@ public class TriStreamPro : MonoBehaviour
             yield return null;
         }
 
+        // If prepare times out, don't proceed with priming/marking as loaded.
+        if (!vp.isPrepared) yield break;
+
         yield return new WaitForSecondsRealtime(primeDelay);
 
+        // Prime first frame so texture is valid
         vp.Play();
         yield return null;
         vp.Pause();
@@ -172,27 +236,42 @@ public class TriStreamPro : MonoBehaviour
         StartCoroutine(ReplayActiveResynced_Co());
     }
 
+    private double GetStartTimeForIndex(int index)
+    {
+        if (startTimeOverrides == null) return 0;
+
+        for (int i = 0; i < startTimeOverrides.Count; i++)
+        {
+            var o = startTimeOverrides[i];
+            if (o != null && o.videoIndex == index)
+                return Math.Max(0, o.startTimeSeconds);
+        }
+
+        return 0;
+    }
+
     private IEnumerator ReplayActiveResynced_Co()
     {
         var vp = GetActivePlayer();
         if (!vp) yield break;
 
-        // Stop playback cleanly
-        vp.Pause();
-        vp.time = 0;
+        // Replay should respect the current video's configured start offset too
+        double startTime = GetStartTimeForIndex(currentIndex);
+        currentStartOffsetSeconds = startTime;
 
-        // Prime first frame so texture is valid (same trick as prepare)
+        vp.Pause();
+        vp.time = startTime;
+
+        // Prime at the seeked time
         vp.Play();
         yield return null;
         vp.Pause();
-        vp.frame = 0;
+
+        // Re-apply exact seek after priming
+        vp.time = startTime;
         yield return null;
 
-        // IMPORTANT: kick the audio manager’s normal pipeline:
-        // HandleVideoChanged() will stop/rewind audio sources + find the correct group
-        // HandlePreparedAndPaused() will schedule both video & audio at DSP time
         OnVideoChanged?.Invoke();
         OnVideoPreparedAndPaused?.Invoke();
     }
-
 }

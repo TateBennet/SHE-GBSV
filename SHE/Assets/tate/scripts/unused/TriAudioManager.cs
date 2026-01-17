@@ -64,7 +64,7 @@ public class TriAudioManager : MonoBehaviour
 
         string key = Normalize(videoStreamManager.GetCurrentVideoName());
 
-        // exact normalized match (you can swap this to Contains if you truly want loose matching)
+        // exact normalized match
         _pendingGroup = duoVideoAudioGroups.Find(g => Normalize(g.videoName) == key);
     }
 
@@ -76,12 +76,36 @@ public class TriAudioManager : MonoBehaviour
             return;
         }
 
+        // NEW: match audio start time to the video's start offset
+        double offset = videoStreamManager.GetCurrentStartOffsetSeconds();
+
         // Arm audio (don’t play yet)
         foreach (var s in _pendingGroup.audioSources)
         {
             if (!s) continue;
+
             s.Stop();
-            s.time = 0f;
+
+            // Apply the same offset to every source in the group.
+            // Clamp defensively to avoid errors if offset exceeds clip length.
+            if (s.clip != null)
+            {
+                float maxT = Mathf.Max(0f, s.clip.length - 0.01f);
+                if (s.clip != null)
+                {
+                    int samples = Mathf.Clamp(
+                        (int)(offset * s.clip.frequency),
+                        0,
+                        Mathf.Max(0, s.clip.samples - 1)
+                    );
+                    s.timeSamples = samples;
+                }
+            }
+            else
+            {
+                s.time = 0f;
+            }
+
             activeSources.Add(s);
         }
 

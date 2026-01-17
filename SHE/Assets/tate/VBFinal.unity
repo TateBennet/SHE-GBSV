@@ -4124,6 +4124,9 @@ MonoBehaviour:
   - file:///sdcard/Download/VBSceneBPass.mp4
   - file:///sdcard/Download/VBSceneBPass2.mp4
   - file:///sdcard/Download/VBSceneCD.mp4
+  startTimeOverrides:
+  - videoIndex: 4
+    startTimeSeconds: 1
   prepareTimeout: 30
   primeDelay: 0.05
 --- !u!1 &1471829215
